@@ -1,0 +1,45 @@
+package com.journaldev.spring.beans;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "company")
+@XmlAccessorType(XmlAccessType.PROPERTY)
+public class Company {
+
+	private String name; 
+	private String catchPhrase; 
+	private String bs;
+	
+	public Company() {
+		super();
+	}
+
+	public Company(String name, String catchPhrase, String bs) {
+		super();
+		this.name = name;
+		this.catchPhrase = catchPhrase;
+		this.bs = bs;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getCatchPhrase() {
+		return catchPhrase;
+	}
+	public void setCatchPhrase(String catchPhrase) {
+		this.catchPhrase = catchPhrase;
+	}
+	public String getBs() {
+		return bs;
+	}
+	public void setBs(String bs) {
+		this.bs = bs;
+	} 
+	
+}
