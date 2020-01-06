@@ -79,14 +79,12 @@ public class HomeController {
 
 	@RequestMapping(value = "/testarFetch", method = RequestMethod.GET)
 	public ModelAndView testarFetch() throws Exception {
-		ModelAndView model = new ModelAndView("views/home");
-
+		ModelAndView model = new ModelAndView("views/home1");
 		try {
 			httpGet(User.class);
 		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
-
 		model.addObject("userName", "terelowmow");
 		model.addObject(SERVERMESSAGE, propertiesBean.getMessages().get("msg.notedit.empty.loadpage"));
 		return model;
