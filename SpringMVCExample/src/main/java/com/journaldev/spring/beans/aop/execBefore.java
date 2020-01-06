@@ -15,8 +15,7 @@ import com.journaldev.spring.beans.context.ConvertJsonToObjectClss;
 public class execBefore {
 
 	private static Logger logger = LoggerFactory.getLogger(ConvertJsonToObjectClss.class);
-	
-	@Before("execution(* com.journaldev.spring.controllers.*(..))\")")
+	@Before("execution(* com.journaldev..*.controllers..*.*(..))")
 	public void name() {
 		logger.info("name");
 	}

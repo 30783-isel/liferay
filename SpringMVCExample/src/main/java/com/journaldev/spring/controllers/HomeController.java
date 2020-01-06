@@ -10,6 +10,7 @@ import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,7 @@ import com.http.client.HttpResponse;
 import com.http.client.HttpService;
 import com.journaldev.spring.beans.User;
 import com.journaldev.spring.beans.context.ConvertJsonToObjectClss;
+import com.journaldev.spring.domain.SpringProperties;
 import com.journaldev.spring.exceptions.HomeException;
 import com.journaldev.spring.operations.PassiveLotteryProperties;
 
@@ -38,9 +40,12 @@ import com.journaldev.spring.operations.PassiveLotteryProperties;
 public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final String SERVERMESSAGE = "serverMessage";
 
 	protected Properties serverProperties;
-	PassiveLotteryProperties propertiesBean;
+
+	@Autowired(required = true)
+	SpringProperties propertiesBean;
 
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -77,12 +82,13 @@ public class HomeController {
 		ModelAndView model = new ModelAndView("views/home");
 
 		try {
-			httpGet(User[].class);
+			httpGet(User.class);
 		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
 
 		model.addObject("userName", "terelowmow");
+		model.addObject(SERVERMESSAGE, propertiesBean.getMessages().get("msg.notedit.empty.loadpage"));
 		return model;
 	}
 
@@ -118,24 +124,21 @@ public class HomeController {
 
 			HttpClient httpClient = HttpClient.getInstance(builder.build());
 
-			HttpService requestService = new HttpService.Builder(httpClient).header("accept", "application/xml").header("no-cache", "false").build();
+			HttpService requestService = new HttpService.Builder(httpClient).header("accept", "application/xml")
+					.header("no-cache", "false").build();
 
 			requestServiceBuilder = new HttpRequest.Builder(requestService);
 		} catch (Exception e) {
-			throw new Exception();
-			// throw new HomeException(HomeException.ERROR_NO_RESULTS,
-			// HomeException.TYPE_ERROR,
-			// "An Exception occurred on client Data Request creation.");
+			throw new HomeException(HomeException.ERROR_NO_RESULTS, HomeException.TYPE_ERROR,
+					"An Exception occurred on client Data Request creation.");
 		}
 		return requestServiceBuilder;
 	}
 
-	private <T> T homeEntityGet(Class<T> entityType, HttpResponse responseHttpReceived) throws IllegalAccessException, HomeException {
-		T responseEntity = null;
-		Gson gson = new Gson();
-		GsonBuilder builder = new GsonBuilder();
-		gson = builder.create();
+	private <T> T homeEntityGet(Class<T> entityType, HttpResponse responseHttpReceived)
+			throws IllegalAccessException, HomeException {
 
+		T responseEntity = null;
 		try {
 			responseEntity = entityType.newInstance();
 
@@ -153,12 +156,12 @@ public class HomeController {
 					ConvertJsonToObjectClss<User[]> convertJsonToObjectClss = context.getBean(ConvertJsonToObjectClss.class);
 					convertJsonToObjectClss.setValueType(User[].class);
 
-					User[] userx = (User[]) convertJsonToObjectClss.convertJsonToObjWithJackson(strResponse);
+					User[] userx = convertJsonToObjectClss.convertJsonToObjWithJackson(strResponse);
 					showJsonToObjectTransformedUsers(userx);
-					
-					User[] users = (User[]) convertJsonToObjectClss.convertJsonToObjWithGson(strResponse);
+
+					User[] users = convertJsonToObjectClss.convertJsonToObjWithGson(strResponse);
 					showJsonToObjectTransformedUsers(users);
-					
+
 					Class<? extends Object> t = responseEntity.getClass();
 					logger.info(t.toString());
 				} catch (Exception ex) {

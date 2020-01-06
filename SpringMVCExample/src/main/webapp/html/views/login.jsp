@@ -5,7 +5,6 @@
 <head>
 
 <link href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/x3la/css/menu/menu.css" rel="stylesheet">
-
 <script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resorces/x3la/javascript/menu.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
