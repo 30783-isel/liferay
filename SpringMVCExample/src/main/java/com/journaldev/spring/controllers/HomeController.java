@@ -10,6 +10,8 @@ import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -25,6 +27,7 @@ import com.http.client.HttpRequest.Builder;
 import com.http.client.HttpResponse;
 import com.http.client.HttpService;
 import com.journaldev.spring.beans.User;
+import com.journaldev.spring.beans.context.ConvertJsonToObjectClss;
 import com.journaldev.spring.exceptions.HomeException;
 import com.journaldev.spring.operations.PassiveLotteryProperties;
 
@@ -74,7 +77,7 @@ public class HomeController {
 		ModelAndView model = new ModelAndView("views/home");
 
 		try {
-			httpGet(User.class);
+			httpGet(User[].class);
 		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
@@ -132,7 +135,7 @@ public class HomeController {
 		Gson gson = new Gson();
 		GsonBuilder builder = new GsonBuilder();
 		gson = builder.create();
-		
+
 		try {
 			responseEntity = entityType.newInstance();
 
@@ -146,10 +149,14 @@ public class HomeController {
 					strResponse = responseHttpReceived.getEntity(String.class);
 					logger.info("Response Received (raw response): " + strResponse);
 
-					User []userx = jsonToObject(strResponse);
+					ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+					ConvertJsonToObjectClss<User[]> convertJsonToObjectClss = context.getBean(ConvertJsonToObjectClss.class);
+					convertJsonToObjectClss.setValueType(User[].class);
+
+					User[] userx = (User[]) convertJsonToObjectClss.convertJsonToObjWithJackson(strResponse);
 					showJsonToObjectTransformedUsers(userx);
 					
-					User[] users = gson.fromJson(strResponse, User[].class);
+					User[] users = (User[]) convertJsonToObjectClss.convertJsonToObjWithGson(strResponse);
 					showJsonToObjectTransformedUsers(users);
 					
 					Class<? extends Object> t = responseEntity.getClass();
@@ -157,33 +164,13 @@ public class HomeController {
 				} catch (Exception ex) {
 					logger.error(ex.getMessage());
 				}
-
 			}
 		} catch (InstantiationException e) {
 			logger.error("Exception detected: " + e.getMessage());
 			throw new HomeException(HomeException.ERROR_NO_RESULTS, HomeException.TYPE_ERROR, "Não foi possível processar o pedido.");
 		}
-
 		return responseEntity;
 	}
-
-	private User[] jsonToObject(String str) {
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false); 
-		User[] users = null;
-		try {
-			
-			users = mapper.readValue(str, User[].class);
-		
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return users;
-	
-
-}
 
 	private void showJsonToObjectTransformedUsers(User[] users) {
 		for (User user : users) {
@@ -192,7 +179,7 @@ public class HomeController {
 			logger.info(user.getUsername());
 			logger.info(user.getPhone());
 			logger.info(user.getWebsite());
-			
+
 			logger.info(user.getAddress().getCity());
 			logger.info(user.getAddress().getStreet());
 			logger.info(user.getAddress().getSuite());
@@ -203,8 +190,9 @@ public class HomeController {
 			logger.info(user.getCompany().getName());
 			logger.info(user.getCompany().getBs());
 			logger.info(user.getCompany().getCatchPhrase());
-			
+
 			logger.info("-------------------------------------------------------------");
 		}
 	}
+
 }

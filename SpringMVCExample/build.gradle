@@ -33,7 +33,7 @@ dependencies {
     compile group: 'com.sun.jersey.samples', name: 'jacksonjsonprovider', version: '1.19.4'
 	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.1'
 	compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.7.7'
-	
+	compile group: 'org.aspectj', name: 'aspectjtools', version: '1.6.2'
 	compile group: 'org.eclipse.persistence', name: 'org.eclipse.persistence.moxy', version: '2.7.5'
     
     
