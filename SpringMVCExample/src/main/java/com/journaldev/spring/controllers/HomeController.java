@@ -1,5 +1,6 @@
 package com.journaldev.spring.controllers;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,6 +8,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,7 @@ import com.http.client.HttpService;
 import com.journaldev.spring.beans.MenuObj;
 import com.journaldev.spring.beans.User;
 import com.journaldev.spring.beans.context.ConvertJsonToObjectClss;
+import com.journaldev.spring.beans.context.WorkWithXLSX;
 import com.journaldev.spring.domain.SpringProperties;
 import com.journaldev.spring.exceptions.HomeException;
 
@@ -43,7 +46,9 @@ public class HomeController {
 
 	@Autowired(required = true)
 	SpringProperties propertiesBean;
-
+	
+	User[] users;
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -114,9 +119,27 @@ public class HomeController {
 		model.addObject("userName", "Janga");
 		model.addObject("listaMenu", createList());
 		model.addObject("users", users);
+		
+		setUsers(users);
+		
 		model.addObject(SERVERMESSAGE, propertiesBean.getMessages().get("msg.notedit.empty.loadpage"));
 
 		return model;
+	}
+	
+	@RequestMapping(value = "/xlsx", method = RequestMethod.GET)
+	public ModelAndView createXLSX() {
+		ModelAndView mv = new ModelAndView("views/xlsx");
+		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		WorkWithXLSX WorkWithXLSX = context.getBean(WorkWithXLSX.class);
+		
+		try {
+			WorkWithXLSX.convertToXLSX(getUsers());
+		} catch (InvalidFormatException | IOException e) {
+			e.printStackTrace();
+		}
+		
+		return mv;
 	}
 
 	private <T> T createList() {
@@ -156,15 +179,13 @@ public class HomeController {
 
 		Builder requestServiceBuilder = null;
 		try {
+			
 			String requestURL = (String) "http://jsonplaceholder.typicode.com/users";
-
 			HttpClient.Builder builder = new HttpClient.Builder(requestURL);
-
 			HttpClient httpClient = HttpClient.getInstance(builder.build());
-
 			HttpService requestService = new HttpService.Builder(httpClient).header("accept", "application/xml").header("no-cache", "false").build();
-
 			requestServiceBuilder = new HttpRequest.Builder(requestService);
+			
 		} catch (Exception e) {
 			throw new HomeException(HomeException.ERROR_NO_RESULTS, HomeException.TYPE_ERROR, "An Exception occurred on client Data Request creation.");
 		}
@@ -234,4 +255,13 @@ public class HomeController {
 		}
 	}
 
+	public User[] getUsers() {
+		return users;
+	}
+
+	public void setUsers(User[] users) {
+		this.users = users;
+	}
+	
+	
 }
