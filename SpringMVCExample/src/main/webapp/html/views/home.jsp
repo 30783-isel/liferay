@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
@@ -42,10 +43,13 @@
 			onclick="pageExtractionsSearch();">Pesquisar</button>
 	</div>
 
+	<c:forEach var="i" begin="1" end="10">
+		<td>${i}</td>
+	</c:forEach>
 
 	<div id="extraction-container-message" style="height: 30px;">
-		<span>${serverMessage}</span>
-		<span>${userName}</span>
+		<span>"${serverMessage}"
+		</span> <span>${userName}</span>
 		<c:if test="${not empty serverMessage}">
 
 			<div id="common-header">
@@ -53,7 +57,8 @@
 			</div>
 		</c:if>
 	</div>
-
+	
+	<h3>Hi ${userName}</h3>
 
 
 	<%-- ---------------------------------- header ---------------------------------- --%>
