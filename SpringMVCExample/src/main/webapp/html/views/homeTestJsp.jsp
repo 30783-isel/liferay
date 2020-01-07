@@ -23,7 +23,6 @@
 	<div id="common-header">
 		<jsp:include page="/html/views/commonx/pageHeader.jsp" />
 	</div>
-
 	<div id="content" class="content scmlContent passiveLotteryContent">
 		<h1>Server!</h1>
 
@@ -33,6 +32,33 @@
 			<button type="button" class="btn btn-success btn-rigth pull-right"
 				onclick="pageExtractionsSearch();">Pesquisar</button>
 		</div>
+
+		<c:forEach var="user" items="${users}">
+			<table class="table table-striped">
+				<tr>
+					<td>${user.name}</td>
+					<td>${user.username}</td>
+					<td>${user.email}</td>
+					<td>${user.address.street}</td>
+					<td>${user.address.city}</td>
+					<td>${user.address.suite}</td>
+					<td>${user.phone}</td>
+					<td>${user.website}</td>
+					<td>${user.company.name}</td>
+					<td>${user.company.catchPhrase}</td>
+				</tr>
+			</table>
+
+		</c:forEach>
+
+		<div id="extraction-container-message" style="height: 30px;">
+			<c:if test="${not empty serverMessage}">
+				<div id="common-header">
+					<jsp:include page="/html/views/commonx/pageMessage.jsp" />
+				</div>
+			</c:if>
+		</div>
+
 	</div>
 	<%-- ---------------------------------- header ---------------------------------- --%>
 	<div id="common-header">
