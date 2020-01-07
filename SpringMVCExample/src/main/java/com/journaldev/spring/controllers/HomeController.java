@@ -79,6 +79,8 @@ public class HomeController {
 
 	@RequestMapping(value = "/testarFetch", method = RequestMethod.GET)
 	public ModelAndView testarFetch() throws Exception {
+//		teste
+//		teste
 		ModelAndView model = new ModelAndView("views/home1");
 		try {
 			httpGet(User.class);
