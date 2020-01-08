@@ -1,6 +1,11 @@
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: "war"
+import com.mkring.wildlydeplyplugin.DeployWildflyTask
+
+plugins {
+    id("java")
+    id('eclipse')
+    id('war')
+    id("com.mkring.wildlydeplyplugin.deploy-wildfly-plugin") version "0.2.10"
+}
 
 war {
     baseName = 'SpringMVCExample'
@@ -47,4 +52,17 @@ dependencies {
     compile group: 'org.springframework.security', name: 'spring-security-taglibs', version:'3.1.2.RELEASE'
 	
     testCompile("junit:junit:4.7") 
+    
+    
+	task deploy(type: DeployWildflyTask) {
+	    host = "localhost"
+	    port = 9990
+	    user = "admin"
+	    password = "admin"
+	    deploymentName = project.name
+	    runtimeName = project.name + "-" + "1.0.0-BUILD-SNAPSHOT" + ".war"
+	    // filepath, here a war example
+	    file = "${buildDir}\\libs\\${project.name}-"+"1.0.0-BUILD-SNAPSHOT"+".war"
+	}
+	
 }
