@@ -13,9 +13,11 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.stereotype.Component;
 
 import com.journaldev.spring.beans.User;
 
+@Component
 public class WorkWithXLSX {
 
 	private static String[] columns = { "Name", "Email", "Username", "Phone" };
@@ -31,7 +33,7 @@ public class WorkWithXLSX {
 		CreationHelper createHelper = workbook.getCreationHelper();
 
 		// Create a Sheet
-		Sheet sheet = workbook.createSheet("Employee");
+		Sheet sheet = workbook.createSheet("User");
 
 		// Create a Font for styling header cells
 		Font headerFont = workbook.createFont();
@@ -79,7 +81,7 @@ public class WorkWithXLSX {
 		}
 
 		// Write the output to a file
-		FileOutputStream fileOut = new FileOutputStream("poi-generated-file.xlsx");
+		FileOutputStream fileOut = new FileOutputStream("C:\\workspacex\\x3la\\liferay\\SpringMVCExample\\xlsx\\poi-generated-file.xlsx");
 		workbook.write(fileOut);
 		fileOut.close();
 
