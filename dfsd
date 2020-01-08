@@ -1,0 +1,540 @@
+[33mcommit b6b0659141352455ebdd85880de06b3223e03bb1[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Paulo Janganga <pjanganga.edge@scml.pt>
+Date:   Tue Jan 7 15:06:34 2020 +0000
+
+    Adicionada tabela com os users
+
+[1mdiff --git a/SpringMVCExample/src/main/java/com/journaldev/spring/beans/MenuObj.java b/SpringMVCExample/src/main/java/com/journaldev/spring/beans/MenuObj.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..c2d5ce8[m
+[1m--- /dev/null[m
+[1m+++ b/SpringMVCExample/src/main/java/com/journaldev/spring/beans/MenuObj.java[m
+[36m@@ -0,0 +1,22 @@[m
+[32m+[m[32mpackage com.journaldev.spring.beans;[m
+[32m+[m
+[32m+[m[32mpublic class MenuObj {[m
+[32m+[m
+[32m+[m	[32mprivate int id;[m
+[32m+[m	[32mprivate String nome;[m
+[32m+[m[41m	[m
+[32m+[m	[32mpublic int getId() {[m
+[32m+[m		[32mreturn id;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setId(int id) {[m
+[32m+[m		[32mthis.id = id;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic String getNome() {[m
+[32m+[m		[32mreturn nome;[m
+[32m+[m	[32m}[m
+[32m+[m	[32mpublic void setNome(String nome) {[m
+[32m+[m		[32mthis.nome = nome;[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[32m}[m
+[1mdiff --git a/SpringMVCExample/src/main/java/com/journaldev/spring/controllers/HomeController.java b/SpringMVCExample/src/main/java/com/journaldev/spring/controllers/HomeController.java[m
+[1mindex ee70c1d..d9fe86c 100644[m
+[1m--- a/SpringMVCExample/src/main/java/com/journaldev/spring/controllers/HomeController.java[m
+[1m+++ b/SpringMVCExample/src/main/java/com/journaldev/spring/controllers/HomeController.java[m
+[36m@@ -1,13 +1,12 @@[m
+ package com.journaldev.spring.controllers;[m
+ [m
+[31m-import java.io.IOException;[m
+ import java.text.DateFormat;[m
+[32m+[m[32mimport java.util.ArrayList;[m
+ import java.util.Date;[m
+[32m+[m[32mimport java.util.List;[m
+ import java.util.Locale;[m
+ import java.util.Properties;[m
+ [m
+[31m-import org.codehaus.jackson.map.DeserializationConfig;[m
+[31m-import org.codehaus.jackson.map.ObjectMapper;[m
+ import org.slf4j.Logger;[m
+ import org.slf4j.LoggerFactory;[m
+ import org.springframework.beans.factory.annotation.Autowired;[m
+[36m@@ -20,18 +19,16 @@[m [mimport org.springframework.web.bind.annotation.RequestMapping;[m
+ import org.springframework.web.bind.annotation.RequestMethod;[m
+ import org.springframework.web.servlet.ModelAndView;[m
+ [m
+[31m-import com.google.gson.Gson;[m
+[31m-import com.google.gson.GsonBuilder;[m
+ import com.http.client.HttpClient;[m
+ import com.http.client.HttpRequest;[m
+ import com.http.client.HttpRequest.Builder;[m
+ import com.http.client.HttpResponse;[m
+ import com.http.client.HttpService;[m
+[32m+[m[32mimport com.journaldev.spring.beans.MenuObj;[m
+ import com.journaldev.spring.beans.User;[m
+ import com.journaldev.spring.beans.context.ConvertJsonToObjectClss;[m
+ import com.journaldev.spring.domain.SpringProperties;[m
+ import com.journaldev.spring.exceptions.HomeException;[m
+[31m-import com.journaldev.spring.operations.PassiveLotteryProperties;[m
+ [m
+ /**[m
+  * Handles requests for the application home page.[m
+[36m@@ -78,26 +75,66 @@[m [mpublic class HomeController {[m
+ 	}[m
+ [m
+ 	@RequestMapping(value = "/testarFetch", method = RequestMethod.GET)[m
+[31m-	public ModelAndView testarFetch() throws Exception {[m
+[32m+[m	[32mpublic ModelAndView testarFetch(Locale locale) throws Exception {[m
+ //		teste[m
+ //		teste[m
+[31m-		ModelAndView model = new ModelAndView("views/home1");[m
+[32m+[m		[32mModelAndView model = new ModelAndView("views/homeTestJsp");[m
+ 		try {[m
+ 			httpGet(User.class);[m
+ 		} catch (InstantiationException | IllegalAccessException e) {[m
+ 			e.printStackTrace();[m
+ 		}[m
+[31m-		model.addObject("userName", "terelowmow");[m
+[31m-		model.addObject("someBeanMax", 10);[m
+[32m+[m
+[32m+[m		[32mDate date = new Date();[m
+[32m+[m		[32mDateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);[m
+[32m+[m		[32mString formattedDate = dateFormat.format(date);[m
+[32m+[m		[32mmodel.addObject("serverTime", formattedDate);[m
+[32m+[m
+[32m+[m		[32mmodel.addObject("userName", "Janga");[m
+[32m+[m		[32mmodel.addObject("listaMenu", createList());[m
+ 		model.addObject(SERVERMESSAGE, propertiesBean.getMessages().get("msg.notedit.empty.loadpage"));[m
+ 		return model;[m
+ 	}[m
+ [m
+[31m-	private <T> T httpGet(Class<T> entityType) throws Exception {[m
+[32m+[m	[32m@RequestMapping(value = "/acessView", method = RequestMethod.GET)[m
+[32m+[m	[32mpublic ModelAndView getAccessToView(Locale locale) throws Exception {[m
+[32m+[m		[32mModelAndView model = new ModelAndView("views/homeTestJsp");[m
+[32m+[m		[32mUser[] users = null;[m
+[32m+[m		[32mtry {[m
+[32m+[m			[32musers = httpGet(User.class);[m
+[32m+[m		[32m} catch (InstantiationException | IllegalAccessException e) {[m
+[32m+[m			[32me.printStackTrace();[m
+[32m+[m		[32m}[m
+ [m
+[31m-		T data = entityType.newInstance();[m
+[31m-		HttpResponse responseHttpReceived = null;[m
+[32m+[m		[32mDate date = new Date();[m
+[32m+[m		[32mDateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);[m
+[32m+[m		[32mString formattedDate = dateFormat.format(date);[m
+[32m+[m		[32mmodel.addObject("serverTime", formattedDate);[m
+[32m+[m
+[32m+[m		[32mmodel.addObject("userName", "Janga");[m
+[32m+[m		[32mmodel.addObject("listaMenu", createList());[m
+[32m+[m		[32mmodel.addObject("users", users);[m
+[32m+[m		[32mmodel.addObject(SERVERMESSAGE, propertiesBean.getMessages().get("msg.notedit.empty.loadpage"));[m
+[32m+[m
+[32m+[m		[32mreturn model;[m
+[32m+[m	[32m}[m
+ [m
+[32m+[m	[32mprivate <T> T createList() {[m
+[32m+[m		[32mList<MenuObj> lista = new ArrayList<MenuObj>();[m
+[32m+[m		[32mfor (int i = 0; i < 10; i++) {[m
+[32m+[m			[32mMenuObj menuObj = new MenuObj();[m
+[32m+[m			[32mmenuObj.setId(i);[m
+[32m+[m			[32mmenuObj.setNome(Integer.toString(i));[m
+[32m+[m			[32mlista.add(menuObj);[m
+[32m+[m		[32m}[m
+[32m+[m
+[32m+[m		[32mreturn (T) lista;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32mprivate <T> User[] httpGet(Class<T> entityType) throws Exception {[m
+[32m+[m
+[32m+[m		[32mHttpResponse responseHttpReceived = null;[m
+[32m+[m		[32mT users = null;[m
+ 		String path = null;[m
+ 		try {[m
+ 			Builder requestServiceBuilder = usersServiceBuilder(path);[m
+[36m@@ -107,12 +144,12 @@[m [mpublic class HomeController {[m
+ 		}[m
+ [m
+ 		try {[m
+[31m-			data = homeEntityGet(entityType, responseHttpReceived);[m
+[32m+[m			[32musers = homeEntityGet(entityType, responseHttpReceived);[m
+ 		} catch (IllegalAccessException | HomeException e) {[m
+ 			e.printStackTrace();[m
+ 		}[m
+ [m
+[31m-		return data;[m
+[32m+[m		[32mreturn (User[]) users;[m
+ 	}[m
+ [m
+ 	private HttpRequest.Builder usersServiceBuilder(String path) throws Exception {[m
+[36m@@ -125,21 +162,19 @@[m [mpublic class HomeController {[m
+ [m
+ 			HttpClient httpClient = HttpClient.getInstance(builder.build());[m
+ [m
+[31m-			HttpService requestService = new HttpService.Builder(httpClient).header("accept", "application/xml")[m
+[31m-					.header("no-cache", "false").build();[m
+[32m+[m			[32mHttpService requestService = new HttpService.Builder(httpClient).header("accept", "application/xml").header("no-cache", "false").build();[m
+ [m
+ 			requestServiceBuilder = new HttpRequest.Builder(requestService);[m
+ 		} catch (Exception e) {[m
+[31m-			throw new HomeException(HomeException.ERROR_NO_RESULTS, HomeException.TYPE_ERROR,[m
+[31m-					"An Exception occurred on client Data Request creation.");[m
+[32m+[m			[32mthrow new HomeException(HomeException.ERROR_NO_RESULTS, HomeException.TYPE_ERROR, "An Exception occurred on client Data Request creation.");[m
+ 		}[m
+ 		return requestServiceBuilder;[m
+ 	}[m
+ [m
+[31m-	private <T> T homeEntityGet(Class<T> entityType, HttpResponse responseHttpReceived)[m
+[31m-			throws IllegalAccessException, HomeException {[m
+[32m+[m	[32mprivate <T> T homeEntityGet(Class<T> entityType, HttpResponse responseHttpReceived) throws IllegalAccessException, HomeException {[m
+ [m
+ 		T responseEntity = null;[m
+[32m+[m		[32mUser[] users = null, userx = null;[m
+ 		try {[m
+ 			responseEntity = entityType.newInstance();[m
+ [m
+[36m@@ -157,10 +192,10 @@[m [mpublic class HomeController {[m
+ 					ConvertJsonToObjectClss<User[]> convertJsonToObjectClss = context.getBean(ConvertJsonToObjectClss.class);[m
+ 					convertJsonToObjectClss.setValueType(User[].class);[m
+ [m
+[31m-					User[] userx = convertJsonToObjectClss.convertJsonToObjWithJackson(strResponse);[m
+[32m+[m					[32muserx = convertJsonToObjectClss.convertJsonToObjWithJackson(strResponse);[m
+ 					showJsonToObjectTransformedUsers(userx);[m
+ [m
+[31m-					User[] users = convertJsonToObjectClss.convertJsonToObjWithGson(strResponse);[m
+[32m+[m					[32musers = convertJsonToObjectClss.convertJsonToObjWithGson(strResponse);[m
+ 					showJsonToObjectTransformedUsers(users);[m
+ [m
+ 					Class<? extends Object> t = responseEntity.getClass();[m
+[36m@@ -173,7 +208,7 @@[m [mpublic class HomeController {[m
+ 			logger.error("Exception detected: " + e.getMessage());[m
+ 			throw new HomeException(HomeException.ERROR_NO_RESULTS, HomeException.TYPE_ERROR, "Não foi possível processar o pedido.");[m
+ 		}[m
+[31m-		return responseEntity;[m
+[32m+[m		[32mreturn (T) users;[m
+ 	}[m
+ [m
+ 	private void showJsonToObjectTransformedUsers(User[] users) {[m
+[1mdiff --git a/SpringMVCExample/src/main/webapp/html/views/commonx/pageHeader.jsp b/SpringMVCExample/src/main/webapp/html/views/commonx/pageHeader.jsp[m
+[1mindex 5ed25ae..2232b3d 100755[m
+[1m--- a/SpringMVCExample/src/main/webapp/html/views/commonx/pageHeader.jsp[m
+[1m+++ b/SpringMVCExample/src/main/webapp/html/views/commonx/pageHeader.jsp[m
+[36m@@ -1,11 +1,13 @@[m
+[31m-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>[m
+[31m-<div>[m
+[31m-	<div class="dropdown">[m
+[31m-		<button onclick="myFunction()" class="dropbtn">Dropdown</button>[m
+[31m-		<div id="myDropdown" class="dropdown-content">[m
+[31m-			<a href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/">Server time</a> [m
+[31m-			<a href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/login1">Login</a> [m
+[31m-			<a href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOThome">Home</a>[m
+[31m-		</div>[m
+[31m-	</div>[m
+[32m+[m[32m<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>[m
+[32m+[m[32m<div>[m
+[32m+[m	[32m<div class="dropdown">[m
+[32m+[m		[32m<button onclick="myFunction()" class="dropbtn">Dropdown</button>[m
+[32m+[m		[32m<div id="myDropdown" class="dropdown-content">[m
+[32m+[m			[32m<a href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/">Server Time</a>[m[41m [m
+[32m+[m			[32m<a href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/login1">Login</a>[m[41m [m
+[32m+[m			[32m<a href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/home">Home</a>[m
+[32m+[m			[32m<a href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/acessView">Acess View</a>[m
+[32m+[m			[32m<a href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/testarFetch">Testar Fetch</a>[m
+[32m+[m		[32m</div>[m
+[32m+[m	[32m</div>[m
+ </div>[m
+\ No newline at end of file[m
+[1mdiff --git a/SpringMVCExample/src/main/webapp/html/views/commonx/pageMessage.jsp b/SpringMVCExample/src/main/webapp/html/views/commonx/pageMessage.jsp[m
+[1mindex 033d573..48c6ad5 100644[m
+[1m--- a/SpringMVCExample/src/main/webapp/html/views/commonx/pageMessage.jsp[m
+[1m+++ b/SpringMVCExample/src/main/webapp/html/views/commonx/pageMessage.jsp[m
+[36m@@ -8,7 +8,6 @@[m
+ 	class="com.journaldev.spring.constants.Constants" />[m
+ [m
+ <div class="table-container">[m
+[31m-	<p>..........................................................................................................................................</p>[m
+ 	<table class="table">[m
+ 		<tbody>[m
+ 			<tr class="passiveLotteryRow">[m
+[36m@@ -42,5 +41,4 @@[m
+ 			</tr>[m
+ 		</tbody>[m
+ 	</table>[m
+[31m-	<p>..........................................................................................................................................</p>[m
+ </div>[m
+\ No newline at end of file[m
+[1mdiff --git a/SpringMVCExample/src/main/webapp/html/views/home.jsp b/SpringMVCExample/src/main/webapp/html/views/home.jsp[m
+[1mindex c35a53a..0ead884 100755[m
+[1m--- a/SpringMVCExample/src/main/webapp/html/views/home.jsp[m
+[1m+++ b/SpringMVCExample/src/main/webapp/html/views/home.jsp[m
+[36m@@ -1,4 +1,5 @@[m
+[31m-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>[m
+[32m+[m[32m<%@ page language="java" contentType="text/html; charset=UTF-8"[m
+[32m+[m	[32mpageEncoding="UTF-8"%>[m
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>[m
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>[m
+ [m
+[36m@@ -6,24 +7,13 @@[m
+ <html>[m
+ <head>[m
+ [m
+[31m-<link[m
+[31m-	href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/x3la/css/menu.css"[m
+[31m-	rel="stylesheet">[m
+[31m-<script[m
+[31m-	src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/x3la/javascript/menu.js"></script>[m
+[31m-[m
+[31m-<script[m
+[31m-	src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/javascript/jquery/jquery-1.11.3.js"></script>[m
+[31m-<script[m
+[31m-	src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/javascript/jquery/jquery-ui.min.js"></script>[m
+[31m-<script[m
+[31m-	src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/javascript/auxiliares.js"></script>[m
+[31m-[m
+[31m-<link[m
+[31m-	href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/bootstrap/css/bootstrap.min.css"[m
+[31m-	rel="stylesheet">[m
+[31m-<script[m
+[31m-	src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/bootstrap/js/bootstrap.min.js"></script>[m
+[32m+[m[32m<link  href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/x3la/css/menu.css" rel="stylesheet">[m
+[32m+[m[32m<link  href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">[m
+[32m+[m[32m<script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/x3la/javascript/menu.js"></script>[m
+[32m+[m[32m<script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/javascript/jquery/jquery-1.11.3.js"></script>[m
+[32m+[m[32m<script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/javascript/jquery/jquery-ui.min.js"></script>[m
+[32m+[m[32m<script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/javascript/auxiliares.js"></script>[m
+[32m+[m[32m<script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/bootstrap/js/bootstrap.min.js"></script>[m
+ [m
+ [m
+ <title>Home</title>[m
+[36m@@ -33,33 +23,17 @@[m
+ 	<div id="common-header">[m
+ 		<jsp:include page="/html/views/commonx/pageHeader.jsp" />[m
+ 	</div>[m
+[31m-	<h1>Server!</h1>[m
+ [m
+[31m-	<P>The time on the server is ${serverTime}.</P>[m
+[31m-[m
+[31m-	<div class="col-md-2 col-xs-2">[m
+[31m-		<button type="button" class="btn btn-success btn-rigth pull-right"[m
+[31m-			onclick="pageExtractionsSearch();">Pesquisar</button>[m
+[31m-	</div>[m
+[32m+[m	[32m<div id="content" class="content scmlContent passiveLotteryContent">[m
+[32m+[m		[32m<h1>Server!</h1>[m
+ [m
+[31m-	<c:forEach var="i" begin="1" end="10">[m
+[31m-		<td>${i}</td>[m
+[31m-	</c:forEach>[m
+[32m+[m		[32m<P>The time on the server is ${serverTime}.</P>[m
+ [m
+[31m-	<div id="extraction-container-message" style="height: 30px;">[m
+[31m-		<span>"${serverMessage}"[m
+[31m-		</span> <span>${userName}</span>[m
+[31m-		<c:if test="${not empty serverMessage}">[m
+[31m-[m
+[31m-			<div id="common-header">[m
+[31m-				<jsp:include page="/html/views/commonx/pageMessage.jsp" />[m
+[31m-			</div>[m
+[31m-		</c:if>[m
+[32m+[m		[32m<div class="col-md-2 col-xs-2">[m
+[32m+[m			[32m<button type="button" class="btn btn-success btn-rigth pull-right"[m
+[32m+[m				[32monclick="pageExtractionsSearch();">Pesquisar</button>[m
+[32m+[m		[32m</div>[m
+ 	</div>[m
+[31m-	[m
+[31m-	<h3>Hi ${userName}</h3>[m
+[31m-[m
+[31m-[m
+ 	<%-- ---------------------------------- header ---------------------------------- --%>[m
+ 	<div id="common-header">[m
+ 		<jsp:include page="/html/views/commonx/pageFooter.jsp" />[m
+[1mdiff --git a/SpringMVCExample/src/main/webapp/html/views/home1.jsp b/SpringMVCExample/src/main/webapp/html/views/home1.jsp[m
+[1mdeleted file mode 100644[m
+[1mindex cba4565..0000000[m
+[1m--- a/SpringMVCExample/src/main/webapp/html/views/home1.jsp[m
+[1m+++ /dev/null[m
+[36m@@ -1,69 +0,0 @@[m
+[31m-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>[m
+[31m-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>[m
+[31m-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>[m
+[31m-[m
+[31m-<%@ page session="false"%>[m
+[31m-<html>[m
+[31m-<head>[m
+[31m-[m
+[31m-<link[m
+[31m-	href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/x3la/css/menu.css"[m
+[31m-	rel="stylesheet">[m
+[31m-<script[m
+[31m-	src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/x3la/javascript/menu.js"></script>[m
+[31m-[m
+[31m-<script[m
+[31m-	src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/javascript/jquery/jquery-1.11.3.js"></script>[m
+[31m-<script[m
+[31m-	src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/javascript/jquery/jquery-ui.min.js"></script>[m
+[31m-<script[m
+[31m-	src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/javascript/auxiliares.js"></script>[m
+[31m-[m
+[31m-<link[m
+[31m-	href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/bootstrap/css/bootstrap.min.css"[m
+[31m-	rel="stylesheet">[m
+[31m-<script[m
+[31m-	src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/bootstrap/js/bootstrap.min.js"></script>[m
+[31m-[m
+[31m-[m
+[31m-<title>Home</title>[m
+[31m-</head>[m
+[31m-<body>[m
+[31m-	<%-- ---------------------------------- header ---------------------------------- --%>[m
+[31m-	<div id="common-header">[m
+[31m-		<jsp:include page="/html/views/commonx/pageHeader.jsp" />[m
+[31m-	</div>[m
+[31m-	<h1>Server!</h1>[m
+[31m-[m
+[31m-	<P>The time on the server is ${serverTime}.</P>[m
+[31m-[m
+[31m-	<div class="col-md-2 col-xs-2">[m
+[31m-		<button type="button" class="btn btn-success btn-rigth pull-right"[m
+[31m-			onclick="pageExtractionsSearch();">Pesquisar</button>[m
+[31m-	</div>[m
+[31m-[m
+[31m-[m
+[31m-	<div id="extraction-container-message" style="height: 30px;">[m
+[31m-		<c:if test="${not empty serverMessage}">[m
+[31m-			<div id="common-header">[m
+[31m-				<jsp:include page="/html/views/commonx/pageMessage.jsp" />[m
+[31m-			</div>[m
+[31m-		</c:if>[m
+[31m-	</div>[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-	<%-- ---------------------------------- header ---------------------------------- --%>[m
+[31m-	<div id="common-header">[m
+[31m-		<jsp:include page="/html/views/commonx/pageFooter.jsp" />[m
+[31m-	</div>[m
+[31m-</body>[m
+[31m-</html>[m
+[31m-[m
+[31m-[m
+[31m-<script type="text/javascript">[m
+[31m-	function pageExtractionsSearch() {[m
+[31m-		console.log("pageExtractionsSearch");[m
+[31m-		callController();[m
+[31m-	}[m
+[31m-</script>[m
+[1mdiff --git a/SpringMVCExample/src/main/webapp/html/views/homeTestJsp.jsp b/SpringMVCExample/src/main/webapp/html/views/homeTestJsp.jsp[m
+[1mnew file mode 100644[m
+[1mindex 0000000..c09d7cc[m
+[1m--- /dev/null[m
+[1m+++ b/SpringMVCExample/src/main/webapp/html/views/homeTestJsp.jsp[m
+[36m@@ -0,0 +1,76 @@[m
+[32m+[m[32m<%@ page language="java" contentType="text/html; charset=UTF-8"[m
+[32m+[m	[32mpageEncoding="UTF-8"%>[m
+[32m+[m[32m<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>[m
+[32m+[m[32m<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>[m
+[32m+[m
+[32m+[m[32m<%@ page session="false"%>[m
+[32m+[m[32m<html>[m
+[32m+[m[32m<head>[m
+[32m+[m
+[32m+[m[32m<link  href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/x3la/css/menu.css" rel="stylesheet">[m
+[32m+[m[32m<link  href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">[m
+[32m+[m[32m<script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/x3la/javascript/menu.js"></script>[m
+[32m+[m[32m<script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/javascript/jquery/jquery-1.11.3.js"></script>[m
+[32m+[m[32m<script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/javascript/jquery/jquery-ui.min.js"></script>[m
+[32m+[m[32m<script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/javascript/auxiliares.js"></script>[m
+[32m+[m[32m<script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/bootstrap/js/bootstrap.min.js"></script>[m
+[32m+[m
+[32m+[m
+[32m+[m[32m<title>Home</title>[m
+[32m+[m[32m</head>[m
+[32m+[m[32m<body>[m
+[32m+[m	[32m<%-- ---------------------------------- header ---------------------------------- --%>[m
+[32m+[m	[32m<div id="common-header">[m
+[32m+[m		[32m<jsp:include page="/html/views/commonx/pageHeader.jsp" />[m
+[32m+[m	[32m</div>[m
+[32m+[m	[32m<div id="content" class="content scmlContent passiveLotteryContent">[m
+[32m+[m		[32m<h1>Server!</h1>[m
+[32m+[m
+[32m+[m		[32m<P>The time on the server is ${serverTime}.</P>[m
+[32m+[m
+[32m+[m		[32m<div class="col-md-2 col-xs-2">[m
+[32m+[m			[32m<button type="button" class="btn btn-success btn-rigth pull-right"[m
+[32m+[m				[32monclick="pageExtractionsSearch();">Pesquisar</button>[m
+[32m+[m		[32m</div>[m
+[32m+[m
+[32m+[m		[32m<c:forEach var="user" items="${users}">[m
+[32m+[m			[32m<table class="table table-striped">[m
+[32m+[m				[32m<tr>[m
+[32m+[m					[32m<td>${user.name}</td>[m
+[32m+[m					[32m<td>${user.username}</td>[m
+[32m+[m					[32m<td>${user.email}</td>[m
+[32m+[m					[32m<td>${user.address.street}</td>[m
+[32m+[m					[32m<td>${user.address.city}</td>[m
+[32m+[m					[32m<td>${user.address.suite}</td>[m
+[32m+[m					[32m<td>${user.phone}</td>[m
+[32m+[m					[32m<td>${user.website}</td>[m
+[32m+[m					[32m<td>${user.company.name}</td>[m
+[32m+[m					[32m<td>${user.company.catchPhrase}</td>[m
+[32m+[m				[32m</tr>[m
+[32m+[m			[32m</table>[m
+[32m+[m
+[32m+[m		[32m</c:forEach>[m
+[32m+[m
+[32m+[m		[32m<div id="extraction-container-message" style="height: 30px;">[m
+[32m+[m			[32m<c:if test="${not empty serverMessage}">[m
+[32m+[m				[32m<div id="common-header">[m
+[32m+[m					[32m<jsp:include page="/html/views/commonx/pageMessage.jsp" />[m
+[32m+[m				[32m</div>[m
+[32m+[m			[32m</c:if>[m
+[32m+[m		[32m</div>[m
+[32m+[m
+[32m+[m	[32m</div>[m
+[32m+[m	[32m<%-- ---------------------------------- header ---------------------------------- --%>[m
+[32m+[m	[32m<div id="common-header">[m
+[32m+[m		[32m<jsp:include page="/html/views/commonx/pageFooter.jsp" />[m
+[32m+[m	[32m</div>[m
+[32m+[m[32m</body>[m
+[32m+[m[32m</html>[m
+[32m+[m
+[32m+[m
+[32m+[m[32m<script type="text/javascript">[m
+[32m+[m	[32mfunction pageExtractionsSearch() {[m
+[32m+[m		[32mconsole.log("pageExtractionsSearch");[m
+[32m+[m		[32mcallController();[m
+[32m+[m	[32m}[m
+[32m+[m[32m</script>[m
+[1mdiff --git a/SpringMVCExample/src/main/webapp/html/views/login.jsp b/SpringMVCExample/src/main/webapp/html/views/login.jsp[m
+[1mindex 12b66ae..54e118a 100755[m
+[1m--- a/SpringMVCExample/src/main/webapp/html/views/login.jsp[m
+[1m+++ b/SpringMVCExample/src/main/webapp/html/views/login.jsp[m
+[36m@@ -4,8 +4,13 @@[m
+ <html>[m
+ <head>[m
+ [m
+[31m-<link href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/x3la/css/menu/menu.css" rel="stylesheet">[m
+[31m-<script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resorces/x3la/javascript/menu.js"></script>[m
+[32m+[m[32m<link  href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/x3la/css/menu.css" rel="stylesheet">[m
+[32m+[m[32m<link  href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">[m
+[32m+[m[32m<script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/x3la/javascript/menu.js"></script>[m
+[32m+[m[32m<script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/javascript/jquery/jquery-1.11.3.js"></script>[m
+[32m+[m[32m<script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/javascript/jquery/jquery-ui.min.js"></script>[m
+[32m+[m[32m<script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/javascript/auxiliares.js"></script>[m
+[32m+[m[32m<script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/bootstrap/js/bootstrap.min.js"></script>[m
+ [m
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">[m
+ <title>Login Page</title>[m
+[1mdiff --git a/SpringMVCExample/src/main/webapp/html/views/user.jsp b/SpringMVCExample/src/main/webapp/html/views/user.jsp[m
+[1mindex f8d2d29..b9b0d9f 100755[m
+[1m--- a/SpringMVCExample/src/main/webapp/html/views/user.jsp[m
+[1m+++ b/SpringMVCExample/src/main/webapp/html/views/user.jsp[m
+[36m@@ -4,8 +4,13 @@[m
+ <html>[m
+ <head>[m
+ [m
+[31m-<link href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/x3la/css/menu/menu.css" rel="stylesheet">[m
+[31m-<script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resorces/x3la/javascript/menu.js"></script>[m
+[32m+[m[32m<link  href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/x3la/css/menu.css" rel="stylesheet">[m
+[32m+[m[32m<link  href="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">[m
+[32m+[m[32m<script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/x3la/javascript/menu.js"></script>[m
+[32m+[m[32m<script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/javascript/jquery/jquery-1.11.3.js"></script>[m
+[32m+[m[32m<script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/javascript/jquery/jquery-ui.min.js"></script>[m
+[32m+[m[32m<script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/javascript/auxiliares.js"></script>[m
+[32m+[m[32m<script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/bootstrap/js/bootstrap.min.js"></script>[m
+ [m
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">[m
+ <title>User Home Page</title>[m

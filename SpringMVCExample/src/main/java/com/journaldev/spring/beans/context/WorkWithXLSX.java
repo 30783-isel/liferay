@@ -81,7 +81,11 @@ public class WorkWithXLSX {
 		}
 
 		// Write the output to a file
+<<<<<<< HEAD
 		FileOutputStream fileOut = new FileOutputStream("C:\\workspacex\\x3la\\liferay\\SpringMVCExample\\xlsx\\poi-generated-file.xlsx");
+=======
+		FileOutputStream fileOut = new FileOutputStream("C:\\workspacex\\x3la\\liferay\\SpringMVCExample\\poi-generated-file.xlsx");
+>>>>>>> branch 'master' of https://github.com/30783-isel/liferay.git
 		workbook.write(fileOut);
 		fileOut.close();
 

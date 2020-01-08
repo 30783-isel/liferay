@@ -146,6 +146,7 @@ public class HomeController {
 			e.printStackTrace();
 		}
 		mv.addObject("menu", listMenu());
+<<<<<<< HEAD
 		return mv;
 	}
 
@@ -156,6 +157,8 @@ public class HomeController {
 		WorkWithPdf workWithPdf = context.getBean(WorkWithPdf.class);
 
 		workWithPdf.generatePDF(getUsers());
+=======
+>>>>>>> branch 'master' of https://github.com/30783-isel/liferay.git
 		return mv;
 	}
 
@@ -292,8 +295,11 @@ public class HomeController {
 		lista.add(linkMenuTestarJavascriptFetch);
 		LinkMenu linkMenuXLSX = new LinkMenu("/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/xlsx", "XLSX");
 		lista.add(linkMenuXLSX);
+<<<<<<< HEAD
 		LinkMenu linkMenuPDF = new LinkMenu("/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/pdf", "PDF");
 		lista.add(linkMenuPDF);
+=======
+>>>>>>> branch 'master' of https://github.com/30783-isel/liferay.git
 
 		return lista;
 	}
