@@ -1,0 +1,1028 @@
+@CHARSET "UTF-8";
+
+.modal label{
+	font-size: 12px;
+}
+
+.modal .modal-inner-msg img {
+	height: 21px;
+}
+
+.modal span.input-img {
+	margin-bottom: -4px;
+}
+
+.modal .modal-inner-msg .ERROR {
+	color: #E81C1C;
+}
+
+.modal .modal-inner-msg .SUCCESS {
+	color: #7EC241;
+}
+
+.modal #modal-upper-msg .row {
+	margin-bottom: 10px;
+}
+
+.modal #modal-lower-msg .row {
+	margin-top: 10px;
+}
+
+
+/* ##################################### */
+/* ######## Glyph Icon Element ######### */
+/* ##################################### */
+
+.span-minus {
+	color:red;
+	margin-right:5px;
+}
+
+.span-plus {
+	color:green;
+}
+
+/* ##################################### */
+/* ######### Exception elements ######## */
+/* ##################################### */
+
+#excBox {
+	background-color: #F1F1F1;
+	margin-top: 28px;
+	font-family: Roboto-Bold;
+	padding-top: 20px;
+    padding-bottom: 20px;
+} 
+
+#excBtn { 
+	padding-top: 12px; 
+	padding-left: 0px;
+} 
+
+/* ##################################### */
+/* ######### Elements Override ######### */
+/* ##################################### */
+
+html {
+	/* height:100vh; */
+}
+
+body { /* Due to the fixed header and bottom */
+	/* This value should be the same as the height of the common header */
+	padding-top: 125px;
+	/* This value should be the same as the height of the common footer */
+	padding-bottom: 61px;
+	height:100vh;
+}
+
+/* #content {
+	padding-top: 125px;
+	padding-bottom: 61px;
+	height:100vh;
+} */
+
+span.disabled,
+label.disabled,
+table.disabled,
+thead.disabled,
+tbody.disabled,
+tfooter.disabled,
+tr.disabled,
+th.disabled,
+td.disabled {
+	color: #CCCCCC;
+}
+
+table.selected,
+thead.selected,
+tbody.selected,
+tfooter.selected,
+tr.selected,
+th.selected,
+td.selected {
+	background-color: #F2F9EC;
+}
+
+
+.dropdown-header {
+	font-size: 13px;
+}
+
+button.dropdown-toggle span:FIRST-CHILD {
+	float: left;
+}
+
+input, button, select, textarea, 
+label.radio, label.radio-inline, 
+label.checkbox, label.checkbox-inline {
+	font-family: Roboto-medium;
+	padding-left: 0px;
+	/* padding-top: 7px;
+	padding-bottom: 7px; */
+}
+
+input {
+	color: #1F1F1F !important;
+}
+
+/* input[disabled],
+input.disabled {
+	cursor: not-allowed;
+	opacity: 0.65;
+} */
+
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
+  background-color: #e5e5e5;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+input[type=radio], input[type=checkbox] {
+	display: none;
+}
+
+input[type=radio] + span.input-img {
+	background: url("/common/images/forms-radios_sprite.png");
+	background-repeat: no-repeat;
+	background-position: 0 -28px;
+	height: 18px;
+	display: inline-block;
+	padding-left: 22px;
+}
+
+input[type=checkbox] + span.input-img {
+	background: url("/common/images/forms-checkbox_sprite.png");
+	background-repeat: no-repeat;
+	background-position: 0 -28px;
+	height: 18px;
+	display: inline-block;
+	padding-left: 22px;
+}
+
+/*
+ input + span.input-img {
+	background-position: 0 -28px;
+}
+*/
+
+input + span.input-img:HOVER {
+	background-position: 0 -56px;
+}
+
+/*
+input[disabled=disabled] + span.input-img {
+	background-position: 0 0;
+	cursor: not-allowed;
+}
+*/
+
+input:disabled + span.input-img {
+	background-position: 0 0;
+	cursor: not-allowed;
+}
+
+input:checked + span.input-img {
+	background-position: 0 -84px;
+}
+
+/*
+ .input-group-addon {
+	color: #1F1F1F;
+}
+ */
+ span.currency {
+ 	white-space: nowrap;
+ }
+
+/* ##################################### */
+/* ####### Loading Icon Element ######## */
+/* ##################################### */
+
+#loading-indicator {
+	position: fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:1100;
+	background-color: Black;
+	opacity: 0.5;
+	display: none
+}
+
+#loading-indicator > div {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 196px; /*32px;*/
+	height: 100px; /*34px;*/
+	text-align: center;
+	/*overflow: auto;*/
+	background-color:transparent;
+	z-index: 1234;
+	margin-left: -98px; /*-16px;*/
+	margin-top: -45px; /*-16px;*/
+}
+
+
+#loading-indicator > div .spinner-message {
+	color: white;
+	font-size: 14px;
+	line-height: 14px;
+	font-family: RobotoCondensed-Regular;
+	padding-top: 20px;
+	display: none;
+}
+
+#exportLoading-indicator #loading-indicator,
+#exportLoading-indicator #loading-indicator > div .spinner-message {
+	display: block;
+}
+
+/* ##################################### */
+/* ########## Tooltip Element ########## */
+/* ##################################### */
+
+span[data-toggle="tooltip"] {
+	padding-left: 9px;
+	padding-right: 10px;
+}
+
+a span[data-toggle="tooltip"] {
+	padding-left: 0px;
+	padding-right: 0px;
+	color: #cccccc;
+}
+
+.tooltip { /* Override bootstrap defaults */
+	opacity: 1 !important;
+}
+
+.tooltip > .tooltip-inner { /* Override bootstrap defaults */
+	background-color: #5CB85C; 
+	color: #FFFFFF; 
+	border: 1px solid #4cae4c;
+}
+
+.tooltip.top > .tooltip-arrow { /* Override bootstrap defaults */
+	border-top: 5px solid #5CB85C !important;
+}
+
+.tooltip.right > .tooltip-arrow { /* Override bootstrap defaults */
+	border-right: 5px solid #5CB85C !important;
+}
+
+.tooltip.bottom > .tooltip-arrow { /* Override bootstrap defaults */
+	border-bottom: 5px solid #5CB85C !important;
+}
+
+.tooltip.left > .tooltip-arrow { /* Override bootstrap defaults */
+	border-left: 5px solid #5CB85C !important;
+}
+
+
+/* ##################################### */
+/* ############# Main Menu ############# */
+/* ##################################### */
+
+#main-menu .app-box {
+	padding-top: 25px;
+ 	min-width: 290px; /* ########################################validar############################### */
+}
+
+#main-menu .app-title {
+	font-size: 19px;
+	font-family: RobotoCondensed-Regular;
+}
+
+#main-menu .areas {
+	/* min-height: 105px; /*90px;*/ /* #############################validar############################# */
+}
+
+#main-menu .area_url {
+	font-size: 15px;
+	font-family: RobotoCondensed-Regular;
+	color:#808080
+}
+
+
+/* ##################################### */
+/* ####### Common Header Elements ###### */
+/* ##################################### */
+
+#common-header { 
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: #FFFFFF;
+	/* z-index: 999; */
+	z-index: 1030; /* TESTING - 11-05-2016 */
+}
+
+#common-header .header-top {
+	/* padding: 15px 15px 15px 15px; */
+	padding-top: 10px;
+	padding-bottom: 10px;
+	/*height: 85px;*/
+}
+
+@media (min-width: 710px) {
+	#common-header .area-tittle {
+	 	padding-right: 180px;	
+	}
+}
+
+#common-header #areaTitle {
+	font-size: 31px;
+	font-family: RobotoCondensed-Regular;
+	color: #1F1F1F;
+}
+
+#areaTitle{
+	white-space: nowrap; /* ####################################validar################################# */
+}
+
+#common-header .header {
+	border: 0px;	
+}
+
+#common-header .header-bottom {
+	padding: 10px 0px 10px 0px;
+	height: 50px;
+	background-color: #F1F1F1; /*#F7F7F7*/
+	top: 85px;
+}
+
+#common-header .navbar { 
+	border: none;
+/* 	background-color: transparent; */
+}
+
+#common-header .home-btn { /* navbar configurations override */
+	height: 30px;
+	width: 30px;
+	border-radius: 2px;
+	background-color: #7EC241;
+	background-position: center;
+	background-image: url("/common/images/icon-bt_home_default.png");
+	background-repeat: no-repeat;
+	margin-left: 0px;
+	/* margin-right: 15px; */
+}
+
+#common-header .home-btn:hover, .home-btn:focus {
+/* 	height: 30px;
+	width: 30px;
+	background-color: #7EC241; */
+	background-image: url("/common/images/icon-bt_home_hover.png");
+}
+
+#common-header .navbar-nav>li { /* clean bootstrap-theme */
+	padding: 7px 0px 0px 0px;
+}
+
+#common-header .navbar-nav>li>a { /* clean bootstrap-theme */
+	display: inline-block;
+	padding: 0;
+	font-family: RobotoCondensed-Regular;
+	color: #1F1F1F;
+	font-size: 17px;
+}
+
+#common-header .navbar-nav>li.active>a { /* clean bootstrap-theme */
+	background: none;
+	box-shadow: none;
+	/* new config */
+	font-weight: bold;
+	border-bottom-width: 3px;
+	border-color: #7ec241;
+	border-bottom-style: solid;
+	padding-bottom: 12px;
+	font-family: RobotoCondensed-Bold;
+	color: #7EC241;
+	font-size: 18px;
+}
+
+#common-header #user {
+	/*With white background*/
+	margin: 0px -15px 0px 0px; /*default values correction*/
+	padding: 4px 10px 4px 10px; /*default values correction*/
+	background-color: white;
+	
+	/*Without white background*/
+	/*margin: 4px -15px 0px 0px;*/ 
+	/* remove padding and background-color lines*/
+	
+}
+
+#common-header #user #user-name-text {
+	/* padding: 3px 0px 0px 3px; */
+	/* float: right; */
+	margin-right: 6px;
+	color: #1F1F1F;
+}
+
+@media (min-width: 710px) {
+	#common-header .navbar-nav>li+li:before { /* added functionality */
+		content: "|\00a0";
+		padding: 0px 10px 0px 13px;
+		color: #1f1f1f;
+	}
+
+	#common-header .navbar-nav:not(.forcedColapse)> li:FIRST-CHILD {
+		margin-left: 13px;
+	}
+}
+
+@media (max-width: 709px) {
+	#common-header .navbar-nav>li:before { /* added functionality */
+		content: ">\00a0";
+		padding: 0px 10px 0px 13px;
+		color: #1f1f1f;
+	}
+	
+	#common-header #user {
+		background-color: transparent;
+		padding-top: 20px; 
+	}
+	
+	#common-header #user #user-name-text {
+		float: none; 
+	}
+	
+}
+
+
+/* ##################################### */
+/* ####### Common Footer Elements ###### */
+/* ##################################### */
+
+/* #footer .media {
+	margin-left: -15px;
+	margin-right: -15px;
+} */
+
+#common-footer {
+	font-family: Roboto-Regular;
+	font-size: 13px;
+	line-height: 16px;
+	border-top-color: #F0F0F0;
+	background-color: #FFFFFF;
+	/* z-index: 999; */
+	z-index: 1030; /* TESTING - 11-05-2016 */
+}
+
+#common-footer .media .footer-height { /* Set the fixed height of the footer here */
+	height: 60px;
+	/* padding-left: 10px; */
+}
+
+#common-footer .media .DJSCML-text {
+	padding-left: 10px;
+}
+
+#common-footer .footer-bold-text {
+	font-family: Roboto-Bold;
+}
+
+#common-footer #server {
+	text-align: right;
+}
+
+#common-footer #server {
+	white-space: nowrap;
+}
+
+/* ##################################### */
+/* ###### Content-header Elements ###### */
+/* ##################################### */
+
+/* #content-header{
+	border-bottom: 1px solid #dedede;	
+}
+ */
+#content-header .content-header {
+	padding-top: 15px;
+	/* padding-bottom: 15px; */
+	border-bottom: 1px solid #dedede;
+}
+
+#content-header .content-header .form-inline > .form-group { /* Override Bootstrap Defaults*/
+	/* margin-top: 15px; */
+	/* margin-bottom: 15px; */ 
+	/* padding-top: 15px; */
+	/* vertical-align: top; */
+}
+
+#content-header label.radio,
+#content-header label.radio-inline, 
+#content-header label.checkbox,
+#content-header label.checkbox-inline {
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
+#content-header .content-header .form-inline > .form-group, 
+#content-header .content-header .form-inline > .criteria-group { /* Override Bootstrap Defaults*/
+	margin-right: 10px;
+	margin-bottom: 15px;
+	vertical-align: top;
+	position: relative;
+}
+
+#content-header .content-header .form-inline > .criteria-group .form-group {
+	vertical-align: top;
+} 
+
+/* #content-header .content-header .form-inline > .criteria-group {
+	margin-bottom: 0px;
+} */
+
+.criteria-group .form-group + .form-group {
+	margin-left: 5px;
+}
+
+#content-header .content-header .form-inline > .form-group.pull-right {
+	margin-right: 0px;
+	margin-left: 10px;
+}
+
+#content-header .content-header .form-group.radio-group { /* Override Bootstrap Defaults*/ 
+	/* margin-top: 7px; */
+	/* margin-bottom: 22px; */
+	min-width: 120px;
+}
+
+/* #content-header .content-header > .submit { Override Bootstrap Defaults
+	float: right;
+	margin-right: 0px;
+	margin-left: 10px;
+} */
+
+#content-header .content-header button.form-control { /*Override Bootstrap Defaults*/
+	min-width: 120px;
+}
+
+#content-header .content-header .criteria-group {
+	display: inline-block;
+}
+
+
+/* ##################################### */
+/* ########### Dynamic Table ########### */
+/* ##################################### */
+
+.dynamic-table-header {
+	margin-right: 17px !important;
+	margin-bottom: -19px !important;
+}
+
+.dynamic-table {
+	max-height: 250px !important;
+	overflow-y: scroll !important;
+/* 	overflow-x: hidden; */
+}
+
+/* div:not(.dynamic-table) .table-body { */
+/* 	overflow: scroll; */
+/*     overflow-y: hidden; */
+/*     overflow-x: visible; */
+/* } */
+
+/* ##################################### */
+/* ###### Content-detail Elements ###### */
+/* ##################################### */
+
+#content {
+	overflow: scroll;
+    overflow-y: visible;
+    overflow-x: hidden;
+}
+#content-detail {
+	padding-top: 15px;
+/*     border-top: 1px solid #dedede; */
+/* 	border-bottom: 1px solid #dedede; */
+	/* padding-bottom: 30px; */
+}
+
+#content-detail #detail-title {
+	text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#content-detail .content-detail > div {
+	padding-bottom: 15px;
+}
+
+#content-detail #detail-footer form .form-group > button,
+#content-detail #detail-footer form .form-group > .btn-group{
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+#content-detail #detail-footer form .form-group > label {
+	margin-left: 15px;
+	margin-right: -5px;
+}
+
+
+/* ##################################### */
+/* ###### Content-footer Elements ###### */
+/* ##################################### */
+#content-footer {
+	/* This value should be the same as the height of the common footer */
+/* 	padding-bottom: 61px; */
+}
+
+
+#content-footer .content-footer {
+	border-top: 1px solid #dedede;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-family: Roboto-medium;
+	
+}
+
+#content-footer button {
+	margin-right: 10px;
+}
+
+#content-footer button.pull-right {
+	margin-right: 0px;
+	margin-left: 10px;
+}
+
+/* #content-footer .submit {
+	float: right;
+} */
+
+#content-footer .pull-right button {
+	margin-right: 0px;
+	margin-left: 10px;
+}
+
+/* ##################################### */
+/* ######## Server message Modal ####### */
+/* ##################################### */
+
+#serverModalMsg {
+/* 	top: 30%; */
+	padding-top: 15%;
+}
+
+#serverModalMsg .media-body {
+	font-size: 15px;
+}
+
+/* #server-msg {
+	background-color: #F1F1F1;
+	margin-top: 50px;
+} */
+
+/* #server-msg img {
+	padding-top: 15px;
+	padding-bottom: 15px;
+} */
+
+/* ##################################### */
+/* ####### Generic Modal Override ###### */
+/* ##################################### */
+
+.modal-header {
+	text-align: right;	
+}
+
+.modal-header .modal-title {
+	float: left;	
+}
+
+.modal-header .btn + .btn {
+    margin-left: 5px;
+    /* margin-bottom: 0; */
+}
+
+
+/* ##################################### */
+/* ####### Custom-caret Elements ####### */
+/* ##################################### */
+
+span.custom-caret {
+	background: url("/common/images/forms-setas_select.png") no-repeat;
+	width: 6px;
+	height: 8px;
+	display: inline-block;
+	float: right;
+	margin: 5px -5px 0px 8px;
+}
+
+
+/* ##################################### */
+/* ######### Dropdown menu list ######## */
+/* ##################################### */
+
+.form-group .btn-group.dropdown > .dropdown-menu {
+	height: auto;
+	max-height: 197px;
+	overflow-x: hidden;
+}
+
+
+/* ##################################### */
+/* ####### Error Message Element ####### */
+/* ##################################### */
+
+.form-group.has-error-msg { /* Override Bootstrap Defaults*/
+	margin-bottom: 25px !important;
+}
+
+.criteria-group .form-group.has-error-msg { /* Override Bootstrap Defaults*/
+	margin-bottom: 10px !important;
+}
+
+.has-error .form-control {
+	border: 1px solid #A94442;
+	/* border-radius: 2px 2px 0px 0px; */
+	border-bottom-right-radius: 0px; 
+	border-bottom-left-radius: 0px; 
+}
+
+.has-error .control-label {
+	color: #1f1f1f;	
+}
+
+.has-error .input-group-addon {
+	border-bottom-right-radius: 0px; 
+	border-bottom-left-radius: 0px; 
+}
+
+
+.error-msg {
+ 	position: absolute;
+	background-color: #A94442;
+	border: #A94442;
+	/* margin-top: -1px; */
+	color: #FFF5F5;
+	font-family: Roboto-bold;
+	font-size: 11px;
+	height: auto;
+	padding: 3px 10px 3px 10px;
+	border-radius: 0px 0px 2px 2px;
+	/* width: 184px; */
+}
+
+/* .content-header .error-msg { */
+/* 	position: inherit !important; */
+/* } */
+
+
+/* ##################################### */
+/* ###### Button Element Override ###### */
+/* ##################################### */
+
+.btn-default {
+  color: #1f1f1f;
+  background-color: #ffffff;
+  border-color: #e5e5e5;
+}
+.btn-default:focus,
+.btn-default.focus {
+  color: #1f1f1f;
+  background-color: #ffffff;
+  border-color: #e5e5e5;
+}
+.btn-default:hover {
+  color: #1f1f1f;
+  background-color: #ffffff;
+  border-color: #7ec241;
+}
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+  color: #1f1f1f;
+  background-color: #ffffff;
+  border-color: #7ec241;
+}
+.btn-default:active:hover,
+.btn-default.active:hover,
+.open > .dropdown-toggle.btn-default:hover,
+.btn-default:active:focus,
+.btn-default.active:focus,
+.open > .dropdown-toggle.btn-default:focus,
+.btn-default:active.focus,
+.btn-default.active.focus,
+.open > .dropdown-toggle.btn-default.focus {
+  color: #1f1f1f;
+  background-color: #ffffff;
+  border-color: #7ec241;
+}
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+  background-image: none;
+}
+.btn-default.disabled,
+.btn-default[disabled],
+fieldset[disabled] .btn-default,
+.btn-default.disabled:hover,
+.btn-default[disabled]:hover,
+fieldset[disabled] .btn-default:hover,
+.btn-default.disabled:focus,
+.btn-default[disabled]:focus,
+fieldset[disabled] .btn-default:focus,
+.btn-default.disabled.focus,
+.btn-default[disabled].focus,
+fieldset[disabled] .btn-default.focus,
+.btn-default.disabled:active,
+.btn-default[disabled]:active,
+fieldset[disabled] .btn-default:active,
+.btn-default.disabled.active,
+.btn-default[disabled].active,
+fieldset[disabled] .btn-default.active {
+  background-color: #ffffff;
+  border-color: #e5e5e5;
+  color: #cccccc;
+}
+.btn-default .badge {
+  color: #ffffff;
+  background-color: #1f1f1f;
+}
+
+.btn-default.dropdown-toggle.disabled,
+.btn-default[disabled].dropdown-toggle,
+fieldset[disabled] .btn-default.dropdown-toggle {
+	background-color: #e5e5e5 !important;
+	color: #1f1f1f;
+	border: 1px solid #cccccc;
+}
+
+/* ##################################### */
+/* ######### Font Style Import ######### */
+/* ##################################### */
+
+@font-face {
+  font-family: 'Roboto-Black';
+  src: url('../fonts/Roboto-Black.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto-BlackItalic';
+  src: url('../fonts/Roboto-BlackItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto-Bold';
+  src: url('../fonts/Roboto-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto-BoldItalic';
+  src: url('../fonts/Roboto-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'RobotoCondensed-Bold';
+  src: url('../fonts/RobotoCondensed-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'RobotoCondensed-BoldItalic';
+  src: url('../fonts/RobotoCondensed-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'RobotoCondensed-Italic';
+  src: url('../fonts/RobotoCondensed-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'RobotoCondensed-Light';
+  src: url('../fonts/RobotoCondensed-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'RobotoCondensed-LightItalic';
+  src: url('../fonts/RobotoCondensed-LightItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'RobotoCondensed-Regular';
+  src: url('../fonts/RobotoCondensed-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto-Italic';
+  src: url('../fonts/Roboto-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto-Light';
+  src: url('../fonts/Roboto-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto-LightItalic';
+  src: url('../fonts/Roboto-LightItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto-Medium';
+  src: url('../fonts/Roboto-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto-MediumItalic';
+  src: url('../fonts/Roboto-MediumItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: url('../fonts/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto-Thin';
+  src: url('../fonts/Roboto-Thin.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto-ThinItalic';
+  src: url('../fonts/Roboto-ThinItalic.ttf') format('truetype');
+}
+
+/* ################################################# */
+/* ######### Bootstrap breakPoint Override ######### */
+/* ################################################# */
+@media (min-width: 710px) {
+	#common-header .navbar-nav.forcedColapse>li:before {
+		content: ">\00a0" !important;
+		padding: 0px 10px 0px 13px !important;
+		color: #1f1f1f !important;
+	}
+	#common-header #user.forcedColapse {
+		background-color: transparent !important;
+		padding-top: 20px !important;
+	}
+	.navbar-nav.forcedColapse .open .dropdown-menu {
+		position: static !important;
+		float: none !important;
+		width: auto !important;
+		margin-top: 0 !important;
+		background-color: transparent !important;
+		border: 0 !important;
+		-webkit-box-shadow: none !important;
+				box-shadow: none !important;
+	}
+	.navbar-nav.forcedColapse .open .dropdown-menu > li > a,
+	.navbar-nav.forcedColapse .open .dropdown-menu .dropdown-header {
+		padding: 5px 15px 5px 25px !important;
+	}
+	.navbar-nav.forcedColapse .open .dropdown-menu > li > a {
+		line-height: 18px !important;
+	}
+	.navbar-nav.forcedColapse .open .dropdown-menu > li > a:hover,
+	.navbar-nav.forcedColapse .open .dropdown-menu > li > a:focus {
+		background-image: none !important;
+	}
+	.navbar-collapse.forcedColapse {
+		overflow-x: visible !important;
+		padding-right: 15px !important;
+		padding-left: 15px !important;
+		border-top: 1px solid transparent !important;
+		-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+		-webkit-overflow-scrolling: touch !important;
+	}
+	.navbar-collapse.in.forcedColapse {
+		overflow-y: auto !important;
+	}
+	.collapse.forcedColapse {
+		display: none !important;
+	}
+	.navbar-toggle.forcedColapse,
+	.collapse.in.forcedColapse {
+		display: block !important;
+	}
+	tr.collapse.in.forcedColapse {
+		display: table-row !important;
+	}
+	tbody.collapse.in.forcedColapse {
+		display: table-row-group !important;
+	}
+	.navbar-nav.forcedColapse {
+		float: none !important;
+		margin: 3px -15px !important;
+	}
+	#common-header #user.forcedColapse #user-name-text,
+	.navbar-header.forcedColapse,
+	.navbar-nav.forcedColapse>li,
+	.navbar-left.forcedColapse,
+	.navbar-right.forcedColapse {
+		float: none !important;
+	}
+}
