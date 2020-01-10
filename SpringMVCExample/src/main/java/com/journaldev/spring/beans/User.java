@@ -7,7 +7,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.PROPERTY)
 public class User {
-
+	
+	private String id;
 	private String name;
 	private String username;
 	private String email;
@@ -16,14 +17,13 @@ public class User {
 	private String website;
 	private Company company;
 	
-	
-	
 	public User() {
 		super();
 	}
 
-	public User(String name, String username, String email, Address address, String phone, String website, Company company) {
+	public User(String id, String name, String username, String email, Address address, String phone, String website, Company company) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.username = username;
 		this.email = email;
@@ -33,6 +33,12 @@ public class User {
 		this.company = company;
 	}
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}

@@ -91,18 +91,25 @@
 		</div>
 	</div>
 
+	<%-- ---------------------------------- Generic Modal Container ---------------------------------- --%>
+	<%-- Area reservada para MODAL de criação e edição de elementos --%>
+	<div id="modal-container"></div>
+
 	<%-- ---------------------------------- footer ---------------------------------- --%>
 	<div id="common-footer">
 		<jsp:include page="/html/views/commonx/pageFooter.jsp" />
 	</div>
 
 
+
+
 	<script type="text/javascript">
 		$(document).ready(function() {
 			contentResize();
 		});
+	</script>
 
-		<script type="text/javascript">
+	<script type="text/javascript">
 		function pageExtractionsSearch() {
 			console.log("pageExtractionsSearch");
 			callController();
@@ -112,6 +119,25 @@
 			console.log("pageExtractionsSearch");
 			callController1();
 		}
+	</script>
+
+	<script type="text/javascript">
+		/**
+		 * Checkboxes listeners
+		 */
+		$('#profiles-table thead input[type=checkbox]').on('click',
+				(function() {
+
+					clickChecbox("#profiles-table thead input[type=checkbox]");
+
+				}));
+
+		$('#profiles-table tbody input[type=checkbox]').on('click',
+				(function() {
+
+					clickChecbox($(this));
+
+				}));
 	</script>
 
 </body>
