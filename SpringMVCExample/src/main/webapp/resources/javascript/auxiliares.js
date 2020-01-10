@@ -7,6 +7,15 @@ function callController(){
 	  .then(data => console.log(data))
 }
 
+function callController1(){
+	
+	console.log('callController');
+	
+	fetch('/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/testarFetch')
+	  .then(response => response.json())
+	  .then(data => console.log(data))
+}
+
 
 /**
  * Method to toggle search Menu visibility onToggleSearchMenuFunction() is a

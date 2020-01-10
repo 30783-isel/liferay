@@ -1,0 +1,1231 @@
+.text-nowrap {
+	white-space: nowrap !important;
+}
+
+.text-center {
+	text-align: center !important;
+}
+
+.text-right {
+	text-align: right !important;
+}
+
+.text-left {
+	text-align: left !important;
+}
+
+.text-highlight {
+	background-color: yellow;
+}
+
+.text-width-description {
+	width: 250px !important;
+	min-width: 250px !important;
+	max-width: 250px !important;
+}
+
+strong {
+	white-space: nowrap !important;
+}
+
+.table-no-borders, .table-no-borders tbody tr td {
+	border: none !important;
+	border-collapse: collapse !important;
+}
+
+.scmlTableSection {
+	padding: 8px 0px 0px 0px !important;
+}
+
+.prizeplansMargins {
+	padding: 0px 8px 8px 8px !important;
+}
+
+/* .modal-title-text { */
+/* 	font-size: 16px !important; */
+/* } */
+#table-divisions thead th, #table-divisions tbody td, #table-series thead th,
+	#table-series tbody td {
+	text-align: center !important;
+}
+
+#table-detail-prizeplan tbody td .form-group, #table-divisions tbody td .form-group,
+	#table-series tbody td .form-group {
+	float: none !important;
+}
+
+#content {
+	overflow-y: hidden !important;
+	overflow-x: hidden !important;
+}
+
+.passiveLotteryContent, .passiveLotteryContainer {
+	overflow-y: hidden !important;
+	margin-left: 0 !important;
+	width: 100%;
+	padding: 0;
+}
+
+.passiveLotteryContentActions {
+	height: 30px;
+	width: 100%;
+}
+
+.dropdown-menu li a {
+	font-size: 11px !important;
+}
+
+.planprize-dropdown {
+	max-height: 170px !important;
+}
+
+.error-msg {
+	position: relative !important;
+	width: auto !important;
+}
+
+.media-object-style {
+	width: 17px;
+	height: 17px !important;
+}
+
+.scml-olimpo-search-divider {
+	height: 8px !important;
+}
+
+/* SEARCH INPUTS */
+.scml-olimpo-input-control {
+	min-width: 100% !important;
+}
+
+.scml-olimpo-input-control .form-control, .scml-olimpo-input-control .btn-group,
+	.scml-olimpo-input-control .input-group {
+	height: 25px !important;
+	font-weight: 400;
+	width: 100% !important;
+	min-width: 100% !important;
+}
+
+.scml-olimpo-input-control span.input-group-addon {
+	width: 25px !important;
+	height: 25px !important;
+	margin: 0px;
+	padding: 0px;
+}
+
+.scml-olimpo-input-control span.glyphicon {
+	height: 20px !important;
+	width: 20px !important;
+	margin: 0px;
+	padding-top: 3px;
+}
+
+.olimpodate-weekend {
+	background-color: #ff00004d !important;
+}
+
+.input-group-long, .input-group-long .btn-group, .input-group-long .input-group,
+	.input-group-long .form-control {
+	width: 100% !important;
+	min-width: 100% !important;
+}
+
+.form-control[readonly] {
+	background-color: #ffffff !important;
+}
+
+.form-control-xs {
+	height: 25px !important;
+}
+
+.form-group-xs {
+	margin-bottom: 4px !important;
+}
+
+.form-control.btn {
+	height: 25px !important;
+}
+
+.table-container {
+	font-size: 11px !important;
+}
+
+.row-extraction-title {
+	border-bottom: 2px solid #5cb85c;
+}
+
+.row-extraction-title-red {
+	border-bottom: 2px solid #d9534f;
+}
+
+.row-extraction-swap-in {
+	border-bottom: 2px solid #5cb85c;
+	margin-bottom: 10px;
+}
+
+.row-extraction-swap-in a {
+	color: #5cb85c !important;
+	text-decoration: none;
+}
+
+.row-extraction-swap-out {
+	border-bottom: 2px solid #d9534f;
+	margin-bottom: 10px;
+}
+
+.row-extraction-swap-out a {
+	color: #d9534f !important;
+	text-decoration: none;
+}
+
+.row-extraction-divider {
+	border-bottom: 1px solid #5cb85c;
+}
+
+.row-extraction-conf {
+	padding: 3px 0px;
+}
+
+.row-extraction-detail {
+	padding: 2px !important;
+	border: none !important;
+	border-collapse: collapse !important;
+	font-size: 11px !important;
+}
+
+.row-extraction-detail .form-control {
+	padding: 1px 12px;
+	font-size: 11px !important;
+	height: 25px !important;
+}
+
+.passiveLotteryContainer-prizeplan-new,
+	.passiveLotteryContainer-prizeplan-detail,
+	.passiveLotteryContainer-extraction-new {
+	font-size: 11px !important;
+	width: 100%;
+}
+
+.passiveLotteryContainer-dynamic {
+	overflow-y: scroll !important;
+}
+
+.passiveLotteryPagination {
+	margin: 0px;
+	padding: 0px;
+}
+
+.dynamic-table-body {
+	overflow-y: scroll;
+}
+
+.dynamic-table-body-horizontal {
+	overflow-x: scroll !important;
+}
+
+.dynamic-table-paginator {
+	margin-right: 17px !important;
+}
+
+.table-body-bottom-raised {
+	margin-bottom: -19px !important;
+}
+
+.table-body-bottom-zero, .logistic-list-message table {
+	margin-bottom: 0px !important;
+}
+
+.table-body-centered {
+	margin: 0 auto;
+	width: auto !important;
+}
+
+#numeration-table-paginator tbody tr td {
+	border: none !important;
+}
+
+.passiveLotteryActionButton {
+	margin-left: 17px !important;
+}
+
+.passiveLotteryDivisionButton {
+	margin-left: 8px !important;
+	margin-Right: 8px !important;
+}
+
+.passiveLotteryListRow {
+	font-size: 11px !important;
+}
+
+.passiveLotteryListRow:hover {
+	-webkit-box-shadow: inset 0px 0px 5px 2px #5cb85c;
+	-moz-box-shadow: inset 0px 0px 5px 2px #5cb85c;
+	box-shadow: inset 0px 0px 5px 2px #5cb85c;
+}
+
+.passiveLotteryListRowSelected {
+	/*background-color: #5cb85c;*/
+	background-color: #F2F9EC;
+}
+
+.passiveLotteryRow, .passiveLotteryRow td {
+	padding: 2px 2px 2px 2px !important;
+	border: none !important;
+	border-collapse: collapse !important;
+	font-size: 11px !important;
+}
+
+.passiveLotteryRow .form-control {
+	padding: 1px 12px;
+	font-size: 11px !important;
+}
+
+.header-actions-title {
+	padding: 4px 0px !important;
+	font-size: 17px !important;
+	color: #6a6a6a;
+}
+
+#tabs-menu {
+	margin-bottom: -1px !important;
+	margin-right: 0px !important;
+	height: 32px;
+	width: 100%;
+}
+
+#tabs-menu-container {
+	visibility: visible;
+	overflow: hidden;
+	position: relative;
+	height: 32px;
+	width: 100%;
+}
+
+#tabs-list-container {
+	z-index: 1;
+	overflow: hidden;
+	width: 100%;
+}
+
+#tabs-menu-container, #tabs-list {
+	display: flex;
+	white-space: nowrap;
+}
+
+#tabs-list {
+	margin-top: 1px;
+}
+
+#tabs-list a {
+	height: 31px;
+	padding: 6px 8px;
+	color: #1F1F1F;
+}
+
+#tabs-list li.active a {
+	color: #5cb85c;
+	cursor: auto;
+}
+
+.arrow {
+	height: 32px;
+	width: 23px;
+	z-index: 2;
+}
+
+.arrow a {
+	background-color: #ffffff;
+	border: 1px solid #dddddd;
+	width: 23px;
+	height: 32px;
+	padding: 8px 0px 0px 4px;
+	z-index: 2;
+}
+
+.arrow a.disabled {
+	color: #e5e5e5;
+	cursor: not-allowed;
+}
+
+.arrow.pull-left {
+	margin-right: 2px;
+}
+/*
+@media ( min-width : 768px) {
+	#tabs-list-container.arrow-scroll {
+		width: 672px;
+	}
+}
+
+@media ( min-width : 992px) {
+	#tabs-list-container.arrow-scroll {
+		width: 892px;
+	}
+}
+
+@media ( min-width : 1200px) {
+	#tabs-list-container.arrow-scroll {
+		width: 1092px;
+	}
+}
+*/
+@media ( min-width : 1350px) {
+	/*
+	#tabs-list-container.arrow-scroll {
+		width: 1242px;
+	}
+*/
+	.modal_lg_scml {
+		width: 1200px;
+	}
+	.modal_content_scml {
+		width: 1200px !important;
+	}
+}
+
+.row {
+	margin-left: 0px !important;
+	margin-right: 0px !important;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus {
+	border-bottom-color: white;
+}
+
+.tab-sign.st-default, .tab-sign.st-default.active {
+	color: #a6a6a6;
+}
+
+.tab-sign.st-locked, .tab-sign.st-locked.active {
+	display: none;
+}
+
+.tab-sign.st-success, .tab-sign.success.active {
+	color: #5cb85c;
+}
+
+.tab-sign.st-warn, .tab-sign.st-warn.active {
+	color: #ffb821;
+}
+
+a.tab-locked {
+	color: #a6a6a6 !important;
+	cursor: not-allowed;
+}
+
+.validation_OK {
+	/* 	background-color: #5cb85c !important; */
+	background-color: #95d195 !important;
+	opacity: 100 !important;
+	color: white !important;
+}
+
+.validation_ERRO {
+	/* 	background-color: #d9534f !important; */
+	background-color: #e68f8d !important;
+	opacity: 100 !important;
+	color: white !important;
+}
+
+.validation_ {
+	background-color: #ffb821 !important;
+	opacity: 100 !important;
+	color: white !important;
+}
+
+.rounded-arrow-OK {
+	color: #5cb85c;
+}
+
+.rounded-arrow-ERRO {
+	color: #d9534f;
+}
+
+.rounded-arrow-container {
+	padding: 0px;
+}
+
+.no-borders {
+	border: 0px solid !important;
+	font-weight: bold !important;
+	background-color: white !important;
+}
+
+#table-search-od tr td {
+	padding: 0px 5px;
+}
+
+/****************
+*   Accordeon   *
+****************/
+#extractionAccordion .panel-heading .panel-title label .labelText {
+	display: inline-block;
+	font-family: Roboto-Regular;
+	font-size: small;
+	margin-right: 5px;
+	margin-top: 3px;
+	float: left;
+}
+
+#extractionAccordion .panel-heading .panel-title a {
+	overflow: hidden;
+	width: auto;
+	display: block;
+}
+
+#extractionAccordion .panel-title .checkbox-inline {
+	/* 	padding-right: 0px; */
+	padding: 9px 8px 9px 0px;
+}
+
+#contComercial-panel-search, #numeration-panel-search,
+	#reservations-panel-search, #contingent-panel-search,
+	#logistic-panel-search {
+	border-right: 1px solid #e5e5e5;
+}
+
+#modal-numeration-detail-dialog {
+	z-index: 1070 !important;
+}
+
+.modal-numeration-detail-dialog-backdrop {
+	z-index: 1060 !important;
+}
+
+#list-group-left, #list-group-right {
+	width: 100%;
+	min-height: 40px;
+	list-style-type: none;
+}
+
+#list-group-left li, #list-group-right li {
+	width: 100%;
+}
+
+#list-group-left li:hover, #list-group-right li:hover, .list-group-item:hover
+	{
+	-webkit-box-shadow: inset 0px 0px 5px 2px #5cb85c;
+	-moz-box-shadow: inset 0px 0px 5px 2px #5cb85c;
+	box-shadow: inset 0px 0px 5px 2px #5cb85c;
+}
+
+.ui-state-highlight {
+	height: 40px;
+	border: 1px dashed #5cb85c;
+	line-height: 1.2px;
+}
+
+/*numeration popups */
+table.insideTable div.input-group {
+	width: 100%;
+}
+
+table.insideTable td.numerationLabel {
+	padding-top: 16px;
+}
+
+table.insideTable tr td {
+	border: none;
+}
+
+.numeration-list-item {
+	cursor: pointer;
+}
+
+.numeration-list-item td {
+	text-align: center;
+}
+
+#numeration-details-fractions .list-item-text {
+	height: 18px;
+}
+
+#numeration-details-fractions .list-item-text.numeration-details-fractions-FranctionNumber
+	{
+	height: 32px;
+	font-size: 18px;
+}
+
+#numeration-details-fractions .list-item-text.numeration-details-fractions-marker
+	{
+	height: 2px;
+	color: #a94442;
+}
+
+#numerationDetailDataContainer .insideTable td {
+	padding: 2px;
+}
+
+#numerationDetailDataContainer table.insideTable {
+	border: none;
+	margin-bottom: 0;
+}
+
+#modal-content-numeration-pages .modal-content-numeration-pages-searchLabel
+	{
+	padding-top: 5px;
+}
+
+#modal-content-numeration-pages #modal-content-numeration-pages-searchButton
+	{
+	margin-top: -2px;
+}
+
+#modal-content-numeration-pages #modal-content-numeration-pages-dataHeaders
+	{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#modal-content-numeration-pages .modal-content-numeration-pages-label {
+	padding-top: 16px;
+	white-space: nowrap;
+}
+
+#modal-content-numeration-pages #modal-content-numeration-pages-establishmentInfo
+	{
+	padding: 0;
+	margin: 0;
+}
+
+#modal-content-numeration-pages .insideTable td {
+	padding-bottom: 0;
+}
+
+#modal-content-numeration-pages table.insideTable {
+	border: none;
+	margin: 0;
+}
+/* #modal-content-numeration-pages #modal-content-numeration-pages-establishmentInfoContainer{ */
+/* 	display: none; */
+/* } */
+#modal-content-numeration-pages #numeration-pages-summaryTable-body .summaryAddNumber
+	{
+	color: green;
+}
+
+#modal-content-numeration-pages #numeration-pages-summaryTable-body .summaryTotalNumber
+	{
+	color: blue;
+}
+
+#numeration-table-header-container .context-menu-one th,
+	#numeration-pages-table-header-container .context-menu-one th {
+	text-align: center;
+}
+
+#modal-content-numeration-pages-establishmentInfo .shortInput {
+	width: 100px;
+}
+
+@media ( min-width : 992px) {
+	.modal-lg#modal-content-numeration-add {
+		width: 1100px;
+	}
+}
+
+.oldFractions {
+	padding: 0px;
+	height: 60px;
+	width: 144px;
+}
+
+.newFractions {
+	height: 60px;
+	width: 144px;
+}
+
+.list-item-head {
+	display: flex;
+	padding-top: 5px;
+	height: 45px;
+}
+
+.list-item-footer {
+	display: flex;
+}
+
+.sellRatioLabel {
+	float: left;
+	margin-right: 21px;
+	margin-left: 2px;
+}
+
+.sellRatio {
+	width: 55%;
+	text-align: right;
+}
+
+.list-item-footer {
+	font-size: 10px;
+}
+
+.fractionNumber {
+	font-size: 15px;
+	margin-left: 5px;
+}
+
+.labelADiv {
+	text-align: right;
+	margin-right: 21px;
+	width: 100%;
+	color: red;
+}
+
+.hiddenDiv {
+	display: none;
+	visibility: hidden
+}
+
+.newLabel {
+	color: #5cb85c;
+	font-size: 10px;
+	text-align: right;
+	margin-right: 10px;
+	width: 100%;
+}
+
+.oldLabel {
+	color: #d9534f;
+	font-size: 10px;
+	text-align: right;
+	margin-right: 0px;
+	width: 100%;
+}
+
+.passiveLotteryLastChangedElement {
+	background-color: #6fed50b3;
+}
+
+#modal-content-numeration-detail-body td.numerationLabel {
+	padding-top: 13px;
+	padding-left: 10px;
+}
+
+.contingentListRow, .contingentListRow td {
+	height: 30px !important;
+	padding: 5px 5px 5px 5px !important;
+	border: none !important;
+	border-collapse: collapse !important;
+	font-size: 11px !important;
+}
+
+.contingentListRow .form-group {
+	height: 20px !important;
+}
+
+.contingentListRow input {
+	height: 20px !important;
+	padding: 0px 5px 0px 5px !important;
+}
+
+.sellRatioValue {
+	float: left;
+}
+
+/* numeration establishment info column sizes*/
+td.numerationLabel.numEstablishmentLable {
+	width: 100px;
+}
+
+td.numEstablishmentSmall {
+	width: 150px;
+}
+/*contingent list*/
+#contingent-list-form #retailerDataContainer, #contingent-list-form #establishmentDataContainer
+	{
+	margin-top: 5px;
+}
+
+#contingent-table-header th, #reservations-table-header th {
+	padding-left: 5px;
+	text-align: center;
+}
+
+#contingent-table-body td, #reservations-table-body td {
+	text-align: center
+}
+
+.form-control#establishmentContencyRemoveInput:focus {
+	border-color: #c27d41;
+	outline: 0;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px
+		rgba(194, 78, 65, 0.6);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px
+		rgba(194, 79, 65, 0.6);
+}
+
+/*sends*/
+#sends-contingent-table-body-container {
+	overflow: hidden;
+}
+
+#sends-contingent-table-header th {
+	border: none;
+}
+/*#sends-reinforcements-table-body-container{
+	overflow: hidden;
+}*/
+#sends-table-header th {
+	text-align: center;
+}
+
+#sends-table-body td {
+	text-align: center;
+}
+
+#sends-list-content {
+	max-height: 100%;
+	overflow-y: auto;
+}
+
+/* contingent comercial */
+.contComercial-table-header th, .contComercial-list-item td {
+	text-align: center;
+}
+
+#contComercialAddButtons, #contComercialRemoveButtons,
+	#contComercial-body-add, #contComercial-body-remove {
+	display: none;
+}
+
+#contComercial-pages-summaryTable-body .summaryAddNumber {
+	color: green;
+}
+
+#contComercial-pages-summaryTable-body .summaryTotalNumber {
+	color: blue;
+}
+
+#contComercial-details-fractions .list-item-text {
+	height: 18px;
+}
+
+#contComercial-details-fractions .list-item-text.contComercial-details-fractions-FranctionNumber
+	{
+	height: 32px;
+	font-size: 18px;
+}
+
+#contComercial-details-fractions .list-item-text.contComercial-details-fractions-marker
+	{
+	height: 2px;
+	color: #a94442;
+}
+
+#contComercialDetailDataContainer .insideTable td {
+	padding: 2px;
+}
+
+#contComercialDetailDataContainer table.insideTable {
+	border: none;
+	margin-bottom: 0;
+}
+
+#contComercial-pages-establishmentInfoContainer {
+	padding: 0;
+}
+
+#modal-message-confirmation-dialog {
+	z-index: 1051;
+}
+
+.reservationModalScroll {
+	overflow-y: auto;
+}
+
+.rejectReason-container, .rejectReason-container ul {
+	width: 100%;
+}
+
+.physicalnum-header-list {
+	text-align: inherit !important;
+}
+
+.tables-head-overflow {
+	overflow: hidden;
+	margin-right: 16px;
+	height: 31px;
+}
+
+.tables-body-overflow {
+	overflow: scroll;
+}
+
+.extraction-col1 {
+	min-width: 40px;
+	width: 40px;
+}
+
+.extraction-col2 {
+	min-width: 110px;
+	width: 110px;
+}
+
+.extraction-col3 {
+	min-width: 250px;
+}
+
+.extraction-col4 {
+	min-width: 130px;
+	width: 130px;
+}
+
+.extraction-col5 {
+	min-width: 110px;
+	width: 110px;
+}
+
+.extraction-col6 {
+	min-width: 130px;
+	width: 130px;
+}
+
+.extraction-col7 {
+	min-width: 130px;
+	width: 130px;
+}
+
+.extraction-col8 {
+	min-width: 130px;
+	width: 130px;
+}
+
+.prizeplan-col1 {
+	min-width: 40px;
+	width: 40px;
+}
+
+.prizeplan-col2 {
+	min-width: 60px;
+	width: 60px;
+}
+
+.prizeplan-col3 {
+	min-width: 250px;
+}
+
+.prizeplan-col4 {
+	min-width: 130px;
+	width: 130px;
+}
+
+.prizeplan-col5 {
+	min-width: 70px;
+	width: 70px;
+}
+
+.prizeplan-col6 {
+	min-width: 110px;
+	width: 110px;
+}
+
+.prizeplan-col7 {
+	min-width: 110px;
+	width: 110px;
+}
+
+.prizeplan-col8 {
+	min-width: 110px;
+	width: 110px;
+}
+
+.prizeplan-col9 {
+	min-width: 100px;
+	width: 100px;
+}
+
+.prizeplan-col10 {
+	min-width: 90px;
+	width: 90px;
+}
+
+.prizeplan-col11 {
+	min-width: 90px;
+	width: 90px;
+}
+
+.search-select {
+	width: 90%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: left;
+}
+
+.scmlContent#content {
+	overflow-y: hidden !important;
+}
+
+.statistic-col1 {
+	min-width: 120px;
+	width: 120px;
+}
+
+.statistic-col2 {
+	min-width: 120px;
+	width: 120px;
+}
+
+.statistic-col3 {
+	min-width: 120px;
+	width: 120px;
+}
+
+.statistic-col4 {
+	min-width: 120px;
+	width: 120px;
+}
+
+.scrutiny-prizes-label {
+	width: 55px;
+	margin: 17px 0px;
+	float: left;
+}
+
+.scrutiny-prizes-input {
+	width: 65px;
+	margin: 10px 5px;
+	float: left;
+}
+
+.scrutiny-prizes-sequences-list {
+	margin-bottom: 10px;
+}
+
+.scrutiny-sequence-label {
+	width: 15px;
+	margin: 17px 0px 0px 0px;
+	float: left;
+}
+
+.scrutiny-sequences4-list-12 {
+	max-width: 820px;
+	margin-bottom: 130px;
+}
+
+.scrutiny-sequences4-list-6 {
+	max-width: 370px;
+	margin-bottom: 210px;
+}
+
+.scrutiny-sequences3-list-12 {
+	max-width: 850px;
+	margin-bottom: 10px;
+}
+
+.scrutiny-sequences3-list-6 {
+	max-width: 340px;
+	margin-bottom: 10px;
+}
+
+.scrutiny-sequences2-list-12 {
+	max-width: 820px;
+	margin-bottom: 10px;
+}
+
+.scrutiny-sequences2-list-6 {
+	max-width: 400px;
+	margin-bottom: 10px;
+}
+
+.scrutiny-sequence4-input {
+	width: 58px;
+	margin: 10px 15px 5px 3px;
+	float: left;
+}
+
+.scrutiny-sequence3-input {
+	width: 50px;
+	margin: 10px 15px 5px 3px;
+	float: left;
+}
+
+.scrutiny-sequence2-input {
+	width: 42px;
+	margin: 10px 15px 5px 3px;
+	float: left;
+}
+
+.scrutiny-drawFraction-input {
+	width: 45px;
+	margin: 10px 5px;
+	float: left;
+}
+
+.scrutiny-checksum-input {
+	width: 100px;
+	margin: 10px 5px;
+	float: left;
+}
+
+.scrutiny-date-input {
+	width: 155px;
+	margin: 10px 5px;
+	float: left;
+}
+
+/*contingent area*/
+#contingent-table-paginator-container {
+	margin-top: 5px;
+}
+
+.passiveLotteryListRow.fractionsItem {
+	cursor: pointer;
+}
+
+#modal-content-contingent-body input {
+	width: 100%;
+}
+
+.contingentActionButton {
+	margin-left: 10px;
+}
+
+#searchTicketNrT {
+	min-width: 52% !important;
+	float: left;
+	width: 52% !important;
+}
+
+#searchTicketNrS, #searchTicketNrF {
+	min-width: 22% !important;
+	float: left;
+	width: 22% !important;
+	margin-left: 2%;
+	padding: 2px;
+}
+
+/* contingent area table */
+td.column-small-fixed, th.column-small-fixed {
+	min-width: 125px;
+}
+
+td.column-medium1-fixed, th.column-medium1-fixed {
+	min-width: 190px;
+}
+
+td.column-medium2-fixed, th.column-medium2-fixed {
+	min-width: 250px;
+}
+
+td.column-medium3-fixed, th.column-medium3-fixed {
+	min-width: 300px;
+}
+
+td.column-large-fixed, th.column-large-fixed {
+	min-width: 350px;
+}
+
+.passiveLotteryContainer-contingent-new.passiveLotteryContainer-dynamic
+{
+	overflow-y: auto;
+}
+
+#page-details-fractions-table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.fractionSelected {
+	-webkit-box-shadow: inset 0px 0px 5px 2px #5cb85c;
+	-moz-box-shadow: inset 0px 0px 5px 2px #5cb85c;
+	box-shadow: inset 0px 0px 5px 2px #5cb85c;
+}
+
+/****************************************
+ vReservations
+ ***************************************/
+#searchTicket {
+	min-width: 52% !important;
+	float: left;
+	width: 52% !important;
+}
+
+#searchSeries, #searchFraction {
+	min-width: 22% !important;
+	float: left;
+	width: 22% !important;
+	margin-left: 2%;
+	padding: 2px;
+}
+
+.tables-filters {
+	height: 65px;
+}
+
+.tables-head-overflow {
+	overflow: hidden;
+	margin-right: 16px;
+	height: 31px;
+}
+
+.tables-body-overflow {
+	overflow: scroll;
+}
+
+.tablesContingent-body-overflow {
+	overflow-x: scroll;
+	overflow-x: none;
+}
+
+.vReservations-col-1 {
+	min-width: 150px;
+	width: 150px;
+}
+
+.vReservations-col-2 {
+	min-width: 180px;
+	width: 180px;
+}
+
+.vReservations-col-3 {
+	min-width: 150px;
+	width: 150px;
+}
+
+.vReservations-col-4 {
+	min-width: 150px;
+	width: 150px;
+}
+
+.vReservations-col-5 {
+	min-width: 100px;
+	width: 100px;
+}
+
+.vReservations-col-6 {
+	min-width: 110px;
+	width: 110px;
+}
+
+.vReservations-col-7 {
+	min-width: 100px;
+	width: 100px;
+}
+
+.vReservations-col-8 {
+	min-width: 110px;
+	width: 110px;
+}
+
+.vReservations-col-9 {
+	min-width: 120px;
+	width: 120px;
+}
+
+.vReservations-col-10 {
+	min-width: 130px;
+	width: 130px;
+}
+
+#vReservation-details-area-data .row {
+	margin-top: 20px;
+}
+
+#vReservation-details-area-data input[type="text"] {
+	width: 100%;
+}
+
+#searchMenuContainer ul.dropdown-menu {
+	width: 205px;
+}

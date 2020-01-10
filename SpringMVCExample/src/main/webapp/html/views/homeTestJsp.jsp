@@ -16,6 +16,7 @@
 <script src="/SpringMVCExample-1.0.0-BUILD-SNAPSHOT/resources/bootstrap/js/bootstrap.min.js"></script>
 
 
+
 <title>Home</title>
 </head>
 <body>

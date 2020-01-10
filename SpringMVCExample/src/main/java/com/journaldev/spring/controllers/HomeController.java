@@ -53,19 +53,29 @@ public class HomeController {
 
 	/**
 	 * Simply selects the home view to render by returning its name.
+	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView home(Locale locale, Model model) {
+	public ModelAndView home(Locale locale, Model model) throws Exception {
 		// TestarGitHub
 
 		logger.info("Welcome home! The client locale is {}.", locale);
 
+		User[] users = null;
+		try {
+			users = httpGet(User.class);
+		} catch (InstantiationException | IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		
 		ModelAndView mv = new ModelAndView("views/home");
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
 		mv.addObject("serverTime", formattedDate);
 		mv.addObject("menu", listMenu());
+		mv.addObject("showListaUsers", true);
+		mv.addObject("users", users);
 		return mv;
 	}
 
